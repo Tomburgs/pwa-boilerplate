@@ -1,0 +1,15 @@
+@use 'styles/variables' as *;
+
+.icon {
+    --icon-size: 30px;
+
+    display: inline-block;
+    height: var(--icon-size);
+    width: var(--icon-size);
+}
+
+.loader {
+    border-radius: 50%;
+
+    @include placeholder;
+}

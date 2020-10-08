@@ -1,0 +1,43 @@
+@use 'styles/variables/media';
+
+.items {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-flow: row;
+    list-style: none;
+    padding: 0;
+
+    @include media.mobile {
+        position: fixed;
+        justify-content: space-evenly;
+        bottom: 0;
+        left: 0;
+        height: var(--header-items-height);
+        width: 100vw;
+        box-sizing: border-box;
+        padding: 1rem 1rem max(env(safe-area-inset-bottom), 1rem);
+        background-color: var(--primary-block-color);
+        box-shadow: var(--shadow);
+    }
+
+    a {
+        color: var(--primary-text-color);
+    }
+
+    > li {
+        font-size: 18px;
+        margin: 0 12px;
+
+        &:last-child {
+            @include media.after-mobile {
+                margin: 0 0 0 12px;
+            }
+        }
+    }
+}
+
+.active > a {
+    font-weight: 500;
+    color: var(--highlight-color);
+}

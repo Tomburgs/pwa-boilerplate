@@ -1,0 +1,28 @@
+{
+    "short_name": "PWA Boilerplate",
+    "name": "PWA Boilerplate",
+    "lang": "en-US",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#fff",
+    "background_color": "#000",
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "64x64 32x32 24x24 16x16",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "logo256.png",
+            "type": "image/png",
+            "sizes": "256x256",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "logo512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "maskable any"
+        }
+    ]
+}

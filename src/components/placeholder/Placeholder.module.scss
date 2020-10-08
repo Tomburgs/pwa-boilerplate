@@ -1,0 +1,29 @@
+@use 'styles/variables' as *;
+
+.placeholder {
+    pointer-events: none;
+
+    &::after {
+        color: transparent;
+
+        @include placeholder;
+    }
+}
+
+.short:after {
+    content: 'aaaaaaaaaaaaa';
+}
+
+.medium:after {
+    content: 'aaaaaaaaaaaaaaaaaaaaaaaaaa';
+}
+
+.long:after {
+    content: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+}
+
+.paragraph:after {
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis ligula id ipsum molestie ornare. In commodo consectetur elit, id auctor elit eleifend facilisis. In at ante vel ligula ullamcorper sollicitudin tempus eget metus. Donec vitae ante blandit ligula porta lacinia ac at justo. Etiam sodales hendrerit dui ut volutpat. Curabitur mauris est, tempus et purus non, fermentum scelerisque dui. Vestibulum commodo elementum nisl, et faucibus lectus. Nunc commodo porttitor nunc quis blandit. Donec eu eros a justo volutpat volutpat venenatis in lectus. Vivamus sodales arcu eget quam tempor, id feugiat quam pellentesque. Fusce eu dignissim libero, quis ultrices quam. Donec non blandit arcu. Quisque sed eleifend nisi, quis tincidunt nunc.';
+    line-height: 1.5;
+    word-break: break-word;
+}

@@ -1,0 +1,117 @@
+@use 'fonts' as *;
+@use 'styles/variables/media';
+
+@include fonts;
+
+:root {
+    // Global
+    --shadow: 0 4px 9px 0 rgba(0, 0, 0, .1);
+    --border: 1px solid rgba(0, 0, 0, .1);
+    --border-radius: 20px;
+    --content-max-width: 1100px;
+    --content-padding-value: 1rem;
+    --content-padding:
+        var(--content-padding-value)
+        var(--content-padding-value)
+        calc(var(--header-items-height) + var(--content-padding-value));
+}
+
+html {
+    --background-color: #f5f5f7;
+
+    --highlight-color: #007bff;
+
+    --primary-block-color: #fff;
+    --secondary-block-color: #fff;
+
+    --primary-text-color: #000;
+    --secondary-text-color: #3a3a3c;
+
+    &.dark-mode {
+        --background-color: #1c1c1e;
+
+        --highlight-color: #0a84ff;
+
+        --primary-block-color: #2c2c2e;
+        --secondary-block-color: #8e8e93;
+
+        --primary-text-color: #fff;
+        --secondary-text-color: #f2f2f7;
+    }
+
+    // Header
+    --header-height: var(--header-navigation-height);
+    --header-navigation-height: 70px;
+    --header-offline-height: 30px;
+    --status-bar-highlight-color: #ef4444;
+    &.offline {
+        --header-height: calc(
+            var(--header-navigation-height)
+            + var(--header-notification-height)
+        );
+    }
+
+    // Bottom header items shown on mobile
+    --header-items-height: calc(60px + env(safe-area-inset-bottom));
+    @include media.after-mobile { --header-items-height: 0px; }
+
+    // Sidebar
+    --sidebar-width: 300px;
+
+    // Image
+    --image-default-background: #f8f8f8;
+    --image-content-color: #000;
+}
+
+body {
+    font-size: 12px;
+    margin: 0;
+    background-color: var(--primary-block-color);
+    color: var(--primary-text-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    @include font-family("Raleway", sans-serif);
+}
+
+#__next {
+    background-color: var(--background-color);
+}
+
+main {
+    min-height: calc(100vh - var(--header-height) - 2 * var(--content-padding-value));
+    max-width: var(--content-max-width);
+    padding: var(--content-padding);
+    margin: 0 auto;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    background-color: transparent;
+    cursor: pointer;
+    outline: 0;
+    outline-color: initial;
+    outline-style: initial;
+    outline-width: 0px;
+    border: 0;
+    border-color: initial;
+    border-style: initial;
+    border-width: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+}

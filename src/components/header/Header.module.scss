@@ -1,0 +1,63 @@
+@use 'styles/variables/media';
+
+.header {
+    display: flex;
+    flex-flow: column;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    height: var(--header-height);
+    width: 100vw;
+    background-color: var(--primary-block-color);
+    color: var(--primary-text-color);
+    box-shadow: var(--shadow);
+    padding: env(safe-area-inset-top) 0 0;
+
+    nav {
+        box-sizing: border-box;
+        height: var(--header-navigation-height);
+        width: 100%;
+        max-width: var(--content-max-width);
+        margin: 0 auto;
+        padding: 0 var(--content-padding-value);
+
+        @include media.after-mobile {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 50px;
+        }
+    }
+
+    &Controls {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        @include media.mobile {
+            justify-content: center;
+        }
+    }
+}
+
+.offline {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: var(--header-offline-height);
+    font-size: 15px;
+    background-color: #EDDE5D;
+    color: black;
+
+    &Icon {
+        --icon-size: 20px;
+
+        margin: 0 5px 0;
+    }
+}
+
+@at-root html:global(.offline) {
+    .offline {
+        display: flex;
+    }
+}

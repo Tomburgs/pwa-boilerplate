@@ -1,0 +1,39 @@
+@use 'styles/variables/placeholder' as animations;
+@use 'styles/variables/media';
+
+.page {
+    display: grid;
+    grid-template-columns: 1fr minmax(var(--sidebar-width), 0);
+    grid-column-gap: 2rem;
+
+    @include media.mobile {
+        grid-template-columns: auto;
+    }
+
+    &Content {
+        > h1, h2 {
+            font-weight: 500;
+            font-size: 36px;
+        }
+
+        > p {
+            white-space: pre-line;
+            font-size: 18px;
+            margin: 0;
+        }
+    }
+}
+
+.placeholder {
+    @include animations.placeholder;
+    margin: 0 0 15px;
+    padding-bottom: 20%;
+
+    &:nth-child(n + 2) {
+        padding-bottom: 40%;
+    }
+
+    &:nth-child(n + 3) {
+        padding-bottom: 30%;
+    }
+}

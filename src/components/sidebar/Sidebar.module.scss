@@ -1,0 +1,71 @@
+@use 'styles/variables/media';
+
+.sidebar {
+    position: sticky;
+    top: calc(var(--header-height) + var(--content-padding-value));
+    height: max-content;
+    width: var(--sidebar-width);
+    background-color: var(--primary-block-color);
+    color: var(--primary-text-color);
+    box-shadow: var(--shadow);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+
+    @include media.mobile {
+        display: none;
+    }
+
+    &Profile {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        margin: 0 0 2rem;
+
+        &Image {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+        }
+
+        &Name {
+            font-size: 20px;
+            font-weight: 500;
+            margin: 1rem 0 0;
+        }
+
+        &Bio {
+            text-align: center;
+            color: var(--secondary-text-color);
+            font-size: 16px;
+            font-weight: 400;
+            white-space: pre-wrap;
+            word-break: break-word;
+            margin: 6px 0 0;
+        }
+    }
+
+    &Pages {
+        h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin: 0 0 1rem;
+        }
+
+        a {
+            color: var(--secondary-text-color);
+        }
+
+        &List {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        &Active {
+            pointer-events: none;
+            opacity: .8;
+        }
+    }
+}

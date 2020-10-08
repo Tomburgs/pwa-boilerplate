@@ -1,0 +1,129 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:import/recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "plugins": [
+        "react",
+        "import",
+        "@typescript-eslint"
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2018,
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": { 
+        "no-array-constructor": "off",
+        "no-redeclare": "off",
+        "no-use-before-define": "off",
+        "no-unused-expressions": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/consistent-type-assertions": "warn",
+        "@typescript-eslint/no-array-constructor": "warn",
+        "@typescript-eslint/explicit-function-return-type": [
+            "warn",
+            {
+                "allowExpressions": true,
+                "allowTypedFunctionExpressions": true
+            }
+        ],
+        "@typescript-eslint/no-use-before-define": [
+            "error",
+            {
+                "functions": false,
+                "classes": false,
+                "variables": false,
+                "typedefs": false
+            }
+        ],
+        "@typescript-eslint/no-unused-expressions": [
+            "warn",
+            {
+                "allowShortCircuit": true,
+                "allowTernary": true,
+                "allowTaggedTemplates": true
+            }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+            "warn",
+            {
+                "args": "none",
+                "ignoreRestSiblings": true
+            }
+        ],
+        "@typescript-eslint/member-delimiter-style": [
+            "error",
+            {
+                "multiline": {
+                    "delimiter": "comma",
+                    "requireLast": false
+                },
+                "singleline": {
+                    "delimiter": "comma",
+                    "requireLast": false
+                }
+            }
+        ],
+
+        "import/prefer-default-export": 0,
+        "import/no-useless-path-segments": 1,
+        "import/no-duplicates": 1,
+        "import/order": 1,
+        "import/newline-after-import": 1,
+        "import/no-unresolved": 0,
+
+        "react/jsx-uses-vars": 1,
+        "react/jsx-uses-react": 1,
+        "react/jsx-indent": 0,
+        "react/jsx-indent-props": [2, 2],
+        "react/no-deprecated": 1,
+        "react/button-has-type": 0,
+        "react/prefer-stateless-function": 1,
+        "react/jsx-filename-extension": 0,
+        "react/display-name": 0,
+        "react/require-default-props": 0,
+        "react/jsx-curly-spacing": [2, {
+            "when": "always",
+            "allowMultiline": true,
+            "children": true
+        }],
+
+        "semi": ["error", "always"],
+        "indent": [
+            "warn",
+            4,
+            {
+                "ignoredNodes": [
+                    "JSXElement", "JSXElement > *", "JSXAttribute",
+                    "JSXIdentifier", "JSXNamespacedName", "JSXMemberExpression",
+                    "JSXSpreadAttribute", "JSXExpressionContainer", "JSXOpeningElement",
+                    "JSXClosingElement", "JSXText", "JSXEmptyExpression", "JSXSpreadChild"
+                ]
+            }
+        ],
+        "comma-dangle": ["error", "never"],
+        "no-console": 1,
+        "eqeqeq": [1, "always"],
+        "quotes": [1, "single"],
+        "jsx-quotes": [2, "prefer-double"],
+        "arrow-parens": [2, "as-needed"]
+    }
+}

@@ -1,0 +1,60 @@
+@use 'styles/variables/media';
+
+.profile {
+    --profile-picture-size: 200px;
+
+    p {
+        font-size: 20px;
+    }
+
+    &Main {
+        display: grid;
+        grid-template-columns: var(--profile-picture-size) 1fr;
+        grid-gap: 2rem;
+        padding: 2rem;
+        background-color: var(--primary-block-color);
+        border-radius: var(--border-radius);
+
+        @include media.mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &Picture {
+        height: var(--profile-picture-size);
+        width: var(--profile-picture-size);
+        border-radius: 50%;
+        margin: 0 auto;
+    }
+
+    &Content {
+        h1, h3 {
+            margin: 0;
+        }
+
+        h3 {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+    }
+}
+
+.about {
+    padding: 1rem;
+
+    h2 {
+        font-size: 35px;
+        font-weight: 500;
+    }
+
+    p {
+        max-width: 800px;
+    }
+}
+
+.followersIcon {
+    --icon-size: 20px;
+    margin: 0 10px 0;
+}

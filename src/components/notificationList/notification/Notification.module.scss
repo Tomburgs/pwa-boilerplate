@@ -1,0 +1,98 @@
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOutRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(200px);
+    }
+}
+
+.notification {
+    --notification-vertical-padding: 1rem;
+    --notification-horizontal-padding: 3rem;
+    --notification-padding:
+        var(--notification-vertical-padding)
+        var(--notification-horizontal-padding);
+
+    will-change: opacity, transform;
+    animation-duration: var(--animation-duration);
+    animation-timing-function: ease-in-out;
+
+    position: relative;
+    display: block;
+    background-color: var(--primary-block-color);
+    color: var(--primary-text-color);
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    padding: var(--notification-padding);
+    margin: 0 0 10px;
+
+    &:last-child {
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    button {
+        --size: 20px;
+
+        position: absolute;
+        top: 50%;
+        right: calc(var(--notification-horizontal-padding) / 2 - var(--size) / 2);
+        transform: translateY(-50%);
+        height: var(--size);
+        width: var(--size);
+
+        &:before,
+        &:after {
+            --rotation: 0deg;
+
+            content: '';
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 50%;
+            height: var(--size);
+            width: 2px;
+            background-color: var(--primary-text-color);
+            transform: translateX(-50%) rotate(var(--rotation));
+            border-radius: 1px;
+        }
+
+        &:before {
+            --rotation: 45deg;
+        }
+
+        &:after {
+            --rotation: -45deg;
+        }
+    }
+
+    &Open {
+        animation-name: fadeInLeft;
+    }
+
+    &Close {
+        animation-name: fadeOutRight;
+    }
+}

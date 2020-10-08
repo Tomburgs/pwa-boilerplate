@@ -1,0 +1,14 @@
+@keyframes placeholderAnimation {
+    from { background-position: -1200px 0; }
+    to { background-position: 1200px 0; }
+}
+
+$placeholder-image: linear-gradient(to right, rgba(0, 0, 0, .08) 0, rgba(0, 0, 0, .15) 15%, rgba(0, 0, 0, .08) 30%);
+$placeholder-size: 1200px 100%;
+$placeholder-animation: placeholderAnimation 2s linear infinite;
+
+@mixin placeholder {
+    background-image: $placeholder-image;
+    background-size: $placeholder-size;
+    animation: $placeholder-animation;
+}
