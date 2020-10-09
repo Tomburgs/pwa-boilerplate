@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
+import { ThemeProvider } from 'contexts/theme';
 import Header from 'components/header';
 import NotificationList from 'components/notificationList';
 import store from 'stores';
@@ -33,9 +34,11 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
                 <link rel="manifest" href="/manifest.json" />
             </Head>
             <Provider store={ store }>
-                <NotificationList />
-                <Header />
-                <Component { ...pageProps } />
+                <ThemeProvider>
+                    <NotificationList />
+                    <Header />
+                    <Component { ...pageProps } />
+                </ThemeProvider>
             </Provider>
         </>
     );
