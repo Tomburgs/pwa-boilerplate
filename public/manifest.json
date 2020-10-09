@@ -4,6 +4,7 @@
     "lang": "en-US",
     "start_url": "/",
     "display": "standalone",
+    "orientation": "portrait",
     "theme_color": "#fff",
     "background_color": "#000",
     "icons": [
