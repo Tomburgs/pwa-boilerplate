@@ -47,7 +47,7 @@ html {
     &.offline {
         --header-height: calc(
             var(--header-navigation-height)
-            + var(--header-notification-height)
+            + var(--header-offline-height)
         );
     }
 
