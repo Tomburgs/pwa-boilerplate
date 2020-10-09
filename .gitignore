@@ -5,7 +5,6 @@
 
 # production
 /.next
-/.dist
 
 # misc
 .DS_Store

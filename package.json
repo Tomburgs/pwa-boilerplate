@@ -7,6 +7,7 @@
     "express": "^4.17.1",
     "html-react-parser": "^0.14.0",
     "next": "^9.5.3",
+    "raw-loader": "^4.0.1",
     "react": "^16.13.1",
     "react-dev-utils": "^10.2.1",
     "react-dom": "^16.13.1",
@@ -43,11 +44,9 @@
     "tsconfig-paths": "^3.9.0"
   },
   "scripts": {
-    "development": "NODE_ENV=development nodemon --watch server -e ts,json --exec 'ts-node -r tsconfig-paths/register --project tsconfig.server.json' server",
-    "start": "NODE_ENV=production ts-node --project tsconfig.server.json --transpile-only -r tsconfig-paths/register .dist/index.js",
-    "build": "npm run build:next && npm run build:server",
-    "build:next": "next build",
-    "build:server": "tsc --project tsconfig.server.json"
+    "development": "NODE_ENV=development next",
+    "start": "NODE_ENV=production next start",
+    "build": "next build"
   },
   "browserslist": {
     "production": [

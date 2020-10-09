@@ -1,4 +1,3 @@
-/* eslint-disable */
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const crypto = require('crypto');
 const fs = require('fs');
@@ -13,15 +12,22 @@ module.exports = {
     env: {
         serviceWorkerUrl
     },
+    pageExtensions: ['ts', 'tsx'],
     webpack: (config, { isServer }) => {
-        config.module.rules.push({
-            test: /\.svg$/,
-            use: ['@svgr/webpack']
-        });
+        config.module.rules.push(
+            {
+                test: /\.svg$/,
+                loader: '@svgr/webpack'
+            },
+            {
+                test: /\.html$/,
+                loader: 'raw-loader'
+            }
+        );
 
         if (!isServer) {
             const additionalManifestEntries = fs
-                .readdirSync('public')
+                .readdirSync('public', { withFileTypes: true })
                 /*
                  * Add the public files to precache-manifest entries.
                  *
@@ -29,14 +35,26 @@ module.exports = {
                  * to know if they've changed, so that the service worker
                  * would know to recache them if they have.
                  */
-                .map(file => ({
-                    url: `/${file}`,
-                    revision: crypto.createHash('md5').update(
-                        Buffer.from(
-                            fs.readFileSync(`public/${file}`)
-                        )
-                    ).digest('hex')
-                }));
+                .reduce((manifest, file) => {
+                    const { name } = file;
+
+                    // Filter out directories and hidden files.
+                    if (!file.isFile() || name.startsWith('.')) {
+                        return manifest;
+                    }
+
+                    return [
+                        ...manifest,
+                        {
+                            url: `/${name}`,
+                            revision: crypto.createHash('md5').update(
+                                Buffer.from(
+                                    fs.readFileSync(`public/${name}`)
+                                )
+                            ).digest('hex')
+                        }
+                    ];
+                }, []);
 
             config.plugins.push(
                 new WorkboxPlugin.InjectManifest({
@@ -45,6 +63,12 @@ module.exports = {
                     dontCacheBustURLsMatching: /^\/_next\/static\//,
                     additionalManifestEntries,
                     exclude: [
+                        /*
+                         * Filter out our API route,
+                         * we need this here because our api is a NextJS page,
+                         * and is treated as a static endpoint.
+                         */
+                        /\/api\//i,
                         /^build-manifest\.json$/i,
                         /^react-loadable-manifest\.json$/i,
                         /\/react-refresh\.js$/i,
