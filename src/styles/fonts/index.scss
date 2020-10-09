@@ -22,15 +22,17 @@ $extensionMap: ("ttf": "truetype", "otf": "opentype");
 
     @font-face {
         font-family: _get-variable-font-name($name);
-        src: url(_get-font-path($directory, $vfont, $ext)) format($format);
         font-weight: 100 900;
+        font-display: swap;
+        src: url(_get-font-path($directory, $vfont, $ext)) format($format);
     }
 
     @each $name, $weight in $fonts {
         @font-face {
             font-family: $name;
-            src: url(_get-font-path($directory, $name, $ext)) format($format);
             font-weight: $weight;
+            font-display: swap;
+            src: url(_get-font-path($directory, $name, $ext)) format($format);
         }
     }
 }
