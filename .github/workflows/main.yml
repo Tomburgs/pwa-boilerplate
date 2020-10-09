@@ -1,0 +1,19 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+    eslint:
+      runs-on: ubuntu-latest
+
+      steps:
+        - uses: actions/checkout@v2
+
+        - name: Install modules
+          run: yarn install
+
+        - name: Run ESLint
+          run: yarn eslint
