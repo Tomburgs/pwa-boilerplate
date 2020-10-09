@@ -21,7 +21,7 @@ export class BrowserStorage {
             const entry = this._storage.getItem(name) || '';
             const { value, ttl, createdAt }: BrowserStorageEntry = JSON.parse(entry);
 
-            if (ttl && Date.now() < createdAt + ttl) {
+            if (ttl && Date.now() > createdAt + ttl) {
                 this._storage.removeItem(name);
 
                 return null;
