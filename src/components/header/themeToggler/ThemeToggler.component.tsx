@@ -1,42 +1,15 @@
-import React, {
-    memo,
-    useState,
-    useEffect,
-    useCallback
-} from 'react';
+import React, { memo, useCallback } from 'react';
 import Head from 'next/head';
+import useTheme from 'hooks/useTheme';
 import Icon from 'components/icon';
-import { checkMediaProperty } from 'utils/css';
 import { theme } from 'config';
 import styles from './ThemeToggler.module.scss';
-
-const PREFERS_COLOR_SCHEME = 'prefers-color-scheme: dark';
-const DARK_MODE = 'dark-mode';
 
 const {
     themeToggler,
     themeTogglerIcon,
     statusBarHighlight 
 } = styles;
-
-const useTheme = (): [boolean, (isDarkModeEnabled: boolean) => void] => {
-    const isSystemDarkMode = checkMediaProperty(PREFERS_COLOR_SCHEME);
-    const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(isSystemDarkMode);
-
-    useEffect(() => {
-        const { documentElement: { classList } } = document;
-
-        if (isDarkModeEnabled) {
-            classList.add(DARK_MODE);
-
-            return;
-        }
-
-        classList.remove(DARK_MODE);
-    }, [isDarkModeEnabled]);
-
-    return [isDarkModeEnabled, setIsDarkModeEnabled];
-};
 
 function ThemeToggler(): JSX.Element {
     const [isDarkModeEnabled, setIsDarkModeEnabled] = useTheme();
