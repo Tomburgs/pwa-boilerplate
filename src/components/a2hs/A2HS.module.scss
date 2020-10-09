@@ -8,6 +8,7 @@
     background-color: var(--primary-block-color);
     color: var(--primary-text-color);
     border-radius: 5px;
+    text-align: center;
 
     span,
     svg {
@@ -29,15 +30,15 @@
         font-weight: 500;
     }
 
-    button {
-        font-size: 14px;
-        color: var(--secondary-text-color);
-        text-decoration: underline;
-    }
-
     &Controls {
         width: 100%;
         margin: 6px 0 0;
         text-align: center;
+
+        button {
+            font-size: 14px;
+            color: var(--secondary-text-color);
+            text-decoration: underline;
+        }
     }
 }
