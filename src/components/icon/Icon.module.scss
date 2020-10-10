@@ -1,8 +1,6 @@
-@use 'styles/variables' as *;
+@use 'styles/variables/placeholder' as *;
 
 .icon {
-    --icon-size: 30px;
-
     display: inline-block;
     height: var(--icon-size);
     width: var(--icon-size);
