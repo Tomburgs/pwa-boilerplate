@@ -2,7 +2,7 @@
 
 .sidebar {
     position: sticky;
-    top: calc(var(--header-height) + var(--content-padding-value));
+    top: calc(var(--header-height) + var(--content-padding));
     height: max-content;
     width: var(--sidebar-width);
     background-color: var(--primary-block-color);
