@@ -2,12 +2,7 @@ import {
     Router as WorkboxRouter,
     RegExpRoute
 } from 'workbox-routing';
-import {
-    RouteHandler,
-    RouteHandlerObject,
-    cacheNames
-} from 'workbox-core';
-import { getCacheKeyForURL } from 'workbox-precaching';
+import { RouteHandler, RouteHandlerObject } from 'workbox-core';
 
 declare const self: ServiceWorkerGlobalScope;
 
