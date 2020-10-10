@@ -1,3 +1,10 @@
+@use 'styles/variables/button';
+
+.button {
+    @include button.default;
+    
+    margin: 1rem 0;
+}
 .A2HS {
     display: block;
     width: 100%;

@@ -1,4 +1,9 @@
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
+import React, {
+    createContext,
+    useState,
+    useEffect,
+    ReactNode
+} from 'react';
 import { browserStorage } from 'utils/browser';
 import { checkMediaProperty } from 'utils/css';
 
@@ -61,7 +66,6 @@ export function ThemeProvider(
 
     useInitialLoad(theme);
     useThemeChange(theme);
-
 
     return (
         <ThemeContext.Provider value={ theme }>
