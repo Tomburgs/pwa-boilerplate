@@ -1,75 +1,107 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { PureComponent } from 'react';
 import { isMobile, browserStorage } from 'utils/browser';
 import { checkMediaProperty } from 'utils/css';
+import { BeforeInstallPromptEvent } from './A2HS';
 import IOSInstructions from './IOSInstructions';
-import Install from './Install';
 import styles from './A2HS.module.scss';
+
+export const InstallAccepted = 'accepted';
+export const InstallDismissed = 'dismissed';
 
 // When closed, hide A2HS notification for a week.
 const NOTIFICATION_IGNORE_TIME = 7 * 24 * 60 * 60 * 1000;
 const A2HS_IDENTIFIER = 'A2HS-Notification';
 const DISPLAY_STANDALONE = 'display-mode: standalone';
 
-const { A2HS: A2HSWrapper, A2HSControls } = styles;
+const {
+    A2HS: A2HSWrapper,
+    A2HSControls,
+    button
+} = styles;
 
-const useNotification = (): [
-    boolean,
-    () => void
-] => {
-    const [isOpen, setIsOpen] = useState(false);
-    const closeNotification = useCallback(
-        () => {
-            setIsOpen(false);
-            browserStorage.setItem(
-                A2HS_IDENTIFIER,
-                true,
-                NOTIFICATION_IGNORE_TIME
-            );
-        }, [setIsOpen]
-    );
+type InstallState = {
+    isOpen: boolean
+}
 
-    useEffect(() => {
+export default class A2HS extends PureComponent<unknown, InstallState> {
+    installEvent: BeforeInstallPromptEvent | undefined;
+
+    state = { isOpen: isMobile.iOS() };
+
+    componentDidMount(): void {
         const isAppStandalone = checkMediaProperty(DISPLAY_STANDALONE);
+        const isClosed = browserStorage.getItem(A2HS_IDENTIFIER);
 
-        if (!isAppStandalone) {
-            const isClosed = browserStorage.getItem(A2HS_IDENTIFIER);
-
-            if (!isClosed) {
-                setIsOpen(true);
-            }
+        if (!isAppStandalone && !isClosed) {
+            (self as any).onbeforeinstallprompt = this.installListener;
         }
-    }, []);
-
-    return [isOpen, closeNotification];
-};
-
-export default function A2HS(): JSX.Element | null {
-    const [isOpen, closeNotification] = useNotification();
-
-    if (!isOpen) {
-        return null;
     }
 
-    return (
-        <figure className={ A2HSWrapper }>
-            <figcaption>
-                👋 Welcome!<br/>
-                Add this app to your home screen for the best experience!
-            </figcaption>
-            {
-                isMobile.iOS()
-                    ? <IOSInstructions />
-                    : <Install closeNotification={ closeNotification } />
+    dismissNotification = (): void => {
+        browserStorage.setItem(
+            A2HS_IDENTIFIER,
+            true,
+            NOTIFICATION_IGNORE_TIME
+        );
+    }
+
+    installListener = (event: BeforeInstallPromptEvent): void => {
+        event.preventDefault();
+
+        this.installEvent = event;
+        this.setState({ isOpen: true });
+    }
+
+    install = (): void => {
+        if (!this.installEvent) {
+            return;
+        }
+
+        this.installEvent.prompt();
+        this.installEvent.userChoice.then(
+            choice => {
+                if (choice.outcome === InstallAccepted) {
+                    this.setState({ isOpen: false });
+                }
             }
-            <div className={ A2HSControls }>
-                <button
-                  type="button"
-                  aria-label="close notice"
-                  onClick={ closeNotification }
-                >
-                    Maybe later
-                </button>
-            </div>
-        </figure>
-    );
+        );
+    }
+
+    render(): JSX.Element | null {
+        const { isOpen } = this.state;
+
+        if (!isOpen) {
+            return null;
+        }
+
+        return (
+            <figure className={ A2HSWrapper }>
+                <figcaption>
+                    👋 Welcome!<br/>
+                    Add this app to your home screen for the best experience!
+                </figcaption>
+                {
+                    isMobile.iOS()
+                        ? <IOSInstructions />
+                        : (
+                            <button
+                              onClick={ this.install }
+                              className={ button }
+                            >
+                                Add to Home Screen
+                            </button>
+                        )
+                }
+                <div className={ A2HSControls }>
+                    <button
+                      type="button"
+                      aria-label="close notice"
+                      onClick={ this.dismissNotification }
+                    >
+                        Maybe later
+                    </button>
+                </div>
+            </figure>
+        );
+    }
 }
