@@ -6,7 +6,7 @@
     position: fixed;
     display: flex;
     flex-flow: column;
-    top: calc(var(--header-height) + var(--content-padding-value));
+    top: calc(var(--header-height) + var(--content-padding));
     left: 50%;
     transform: translateX(-50%);
     max-width: 300px;
@@ -14,8 +14,8 @@
 
     @include media.mobile {
         top: auto;
-        bottom: calc(var(--header-items-height) + var(--content-padding-value));
+        bottom: calc(var(--header-items-height) + var(--content-padding));
         width: 100vw;
-        padding: 0 var(--content-padding-value);
+        padding: 0 var(--content-padding);
     }
 }

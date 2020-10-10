@@ -19,7 +19,7 @@
         width: 100%;
         max-width: var(--content-max-width);
         margin: 0 auto;
-        padding: 0 var(--content-padding-value);
+        padding: 0 var(--content-padding);
 
         @include media.after-mobile {
             display: grid;
