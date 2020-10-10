@@ -50,33 +50,11 @@ export default class Router {
         this._ignoredRoutes = ignoredRoutes;
     }
 
-    handleOfflineFetch = async (): Promise<Response | undefined> => {
-        const cache = await self.caches.open(cacheNames.runtime);
-        const cacheURL = getCacheKeyForURL('/');
-
-        if (!cacheURL) {
-            return;
-        }
-
-        const { pathname, search } = new URL(cacheURL);
-        const document = await cache.match(`${pathname}${search}`);
-
-        return document;
-    }
-
     handleFetch = async (event: FetchEvent): Promise<void> => {
-        const { request: { url, destination } } = event;
+        const { request: { url } } = event;
 
         if (this._ignoredRoutes && this._ignoredRoutes.test(url)) {
             return;
-        }
-
-        if (!navigator.onLine && destination === 'document') {
-            const document = await this.handleOfflineFetch();
-
-            if (document) {
-                event.respondWith(document);
-            }
         }
 
         const response = this._workboxRouter.handleRequest(event);
