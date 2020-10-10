@@ -26,7 +26,12 @@ type InstallState = {
 export default class A2HS extends PureComponent<unknown, InstallState> {
     installEvent: BeforeInstallPromptEvent | undefined;
 
-    state = { isOpen: isMobile.iOS() };
+    state = {
+        isOpen: (
+            isMobile.iOS()
+            && !checkMediaProperty(DISPLAY_STANDALONE)
+        )
+    };
 
     componentDidMount(): void {
         const isAppStandalone = checkMediaProperty(DISPLAY_STANDALONE);
