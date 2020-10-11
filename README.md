@@ -1,11 +1,11 @@
 <h1 align="center">PWA Boilerplate</h1>
 <p align="center">
-    ![Build Status](https://github.com/tomburgs/pwa-boilerplate/workflows/Build/badge.svg)
-    ![License](https://img.shields.io/github/license/Tomburgs/pwa-boilerplate?label=License)
-    ![Version](https://img.shields.io/github/package-json/v/Tomburgs/pwa-boilerplate?label=Version)
-    ![Dependencies](https://img.shields.io/david/Tomburgs/pwa-boilerplate?label=Dependencies)
-    ![GitHub Stars](https://img.shields.io/github/stars/Tomburgs/pwa-boilerplate?label=Stars)
-    ![GitHub Forks](https://img.shields.io/github/forks/Tomburgs/pwa-boilerplate?label=Forks)
+    <img alt="Build Status" src="https://github.com/tomburgs/pwa-boilerplate/workflows/Build/badge.svg">
+    <img alt="License" src="https://img.shields.io/github/license/Tomburgs/pwa-boilerplate?label=License">
+    <img alt="Version" src="https://img.shields.io/github/package-json/v/Tomburgs/pwa-boilerplate?label=Version">
+    <img alt="Dependencies" src="https://img.shields.io/david/Tomburgs/pwa-boilerplate?label=Dependencies">
+    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/Tomburgs/pwa-boilerplate?label=Stars">
+    <img alt="GitHub Forks" src="https://img.shields.io/github/forks/Tomburgs/pwa-boilerplate?label=Forks">
 </p>
 
 ## What is PWA Boilerplate?
