@@ -2,6 +2,7 @@
   "name": "pwa-boilerplate",
   "description": "PWA Boilerplate",
   "version": "0.1.0",
+  "license": "MIT",
   "dependencies": {
     "@svgr/webpack": "4.3.3",
     "express": "^4.17.1",
