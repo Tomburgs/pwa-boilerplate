@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'components/image';
 import Icon from 'components/icon';
+import Placeholder from 'components/placeholder';
 import useUser from 'hooks/useUser';
 import styles from './Profile.module.scss';
 
@@ -10,6 +11,7 @@ const {
     profilePicture,
     profileContent,
     followersIcon,
+    followersPlaceholder,
     about
 } = styles;
 
@@ -25,18 +27,27 @@ export default function Profile(): JSX.Element {
         <main className={ profile }>
             <div className={ profileMain }>
                 <Image
+                  isPlaceholder={ !avatar_url }
                   src={ avatar_url }
                   className={ profilePicture }
                 />
                 <div className={ profileContent }>
-                    <h1>{ name }</h1>
-                    <p>{ bio }</p>
+                    <h1>
+                        <Placeholder content={ name } length="short" />
+                    </h1>
+                    <p>
+                        <Placeholder content={ bio } length="long" />
+                    </p>
                     <h3>
                         <Icon
                           asset="People"
                           className={ followersIcon }
                         />
-                        { followers } Followers
+                        {
+                            followers === null
+                                ? <span className={ followersPlaceholder } />
+                                : followers
+                        } Followers
                     </h3>
                 </div>
             </div>
