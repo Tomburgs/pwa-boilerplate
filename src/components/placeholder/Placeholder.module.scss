@@ -1,4 +1,5 @@
-@use 'styles/variables' as *;
+@use 'styles/variables/media';
+@use 'styles/variables/placeholder' as *;
 
 .placeholder {
     pointer-events: none;
@@ -12,14 +13,20 @@
 
 .short:after {
     content: 'aaaaaaaaaaaaa';
+
+    @include media.mobile { content: 'aaaaaaaa'; }
 }
 
 .medium:after {
     content: 'aaaaaaaaaaaaaaaaaaaaaaaaaa';
+
+    @include media.mobile { content: 'aaaaaaaaaaaaaaaa'; }
 }
 
 .long:after {
-    content: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+    content: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
+
+    @include media.mobile { content: 'aaaaaaaaaaaaaaaaaaaaaaaa'; }
 }
 
 .paragraph:after {
