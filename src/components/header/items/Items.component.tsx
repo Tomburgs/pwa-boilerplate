@@ -10,9 +10,9 @@ const {
 } = styles;
 
 const links = [
-    { name: 'Home', url: '/' },
-    { name: 'Pages', url: '/pages' },
-    { name: 'Profile', url: '/profile' }
+    { name: 'Home', url: '/', alias: [] },
+    { name: 'Pages', url: '/pages', alias: ['/[page]'] },
+    { name: 'Profile', url: '/profile', alias: [] }
 ];
 
 export default function Items(): JSX.Element {
@@ -20,13 +20,14 @@ export default function Items(): JSX.Element {
 
     return (
         <ul className={ items }>
-            { links.map(({ name, url }) => (
+            { links.map(({ name, url, alias }) => (
                 <li
                   key={ name }
                   className={
                     injectClassNames([
                         active,
                         pathname === url
+                        || alias.includes(pathname)
                     ])
                   }
                 >
