@@ -13,7 +13,7 @@ module.exports = {
         serviceWorkerUrl
     },
     pageExtensions: ['ts', 'tsx'],
-    webpack: (config, { isServer }) => {
+    webpack: (config, { isServer, dev, webpack, buildId }) => {
         config.module.rules.push(
             {
                 test: /\.svg$/,
@@ -55,14 +55,25 @@ module.exports = {
                         }
                     ];
                 }, []);
+            
+            /*
+             * In development mode pre-cache files up-to 5MB
+             */
+            const maximumFileSizeToCacheInBytes = dev
+                ? 5000000 : undefined;
 
             config.plugins.push(
                 new WorkboxPlugin.InjectManifest({
-                    maximumFileSizeToCacheInBytes: 5000000, // 5mb
                     swSrc: path.resolve('src', 'sw', 'index.ts'),
                     swDest: path.resolve(serviceWorkerDest),
                     dontCacheBustURLsMatching: /^\/_next\/static\//,
+                    maximumFileSizeToCacheInBytes,
                     additionalManifestEntries,
+                    webpackCompilationPlugins: [
+                        new webpack.DefinePlugin({
+                            'self.__BUILD_ID': JSON.stringify(buildId)
+                        })
+                    ],
                     exclude: [
                         /*
                          * Filter out our API route,

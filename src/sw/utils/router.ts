@@ -2,7 +2,12 @@ import {
     Router as WorkboxRouter,
     RegExpRoute
 } from 'workbox-routing';
-import { RouteHandler, RouteHandlerObject } from 'workbox-core';
+import {
+    RouteHandler,
+    RouteHandlerObject,
+    cacheNames
+} from 'workbox-core';
+import getRequestedPageFromURL from 'sw/utils/getRequestedPageFromURL';
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -15,19 +20,19 @@ interface StrategyClass {
 }
 
 export default class Router {
-    private cacheName: string;
+    private _cacheName: string;
     private _ignoredRoutes: RegExp | undefined;
     private _workboxRouter: WorkboxRouter;
 
     constructor(cacheName: string) {
-        this.cacheName = cacheName;
+        this._cacheName = cacheName;
         this._workboxRouter = new WorkboxRouter();
         this._init();
     }
 
     private get config(): Config {
         return {
-            cacheName: this.cacheName
+            cacheName: this._cacheName
         };
     }
 
@@ -45,10 +50,41 @@ export default class Router {
         this._ignoredRoutes = ignoredRoutes;
     }
 
-    handleFetch = async (event: FetchEvent): Promise<void> => {
+    handleOfflineDocumentFetch = async (event: FetchEvent): Promise<Response> => {
         const { request: { url } } = event;
 
+        /*
+         * Make sure that build manifest includes
+         * the pathname we're requesting.
+         */
+        const requestedPage = getRequestedPageFromURL(url);
+
+        if (!requestedPage) {
+            throw new Error('Requested page does not exist');
+        }
+
+        const cache = await self.caches.open(cacheNames.precache);
+        const document = await cache.match(requestedPage, { ignoreSearch: true });
+
+        if (!document) {
+            throw new Error('Missing document cache');
+        }
+
+        return document;
+    }
+
+    handleFetch = async (event: FetchEvent): Promise<void> => {
+        const { request: { url, destination } } = event;
+
         if (this._ignoredRoutes && this._ignoredRoutes.test(url)) {
+            return;
+        }
+
+        if (!navigator.onLine && destination === 'document') {
+            event.respondWith(
+                this.handleOfflineDocumentFetch(event)
+            );
+
             return;
         }
 
