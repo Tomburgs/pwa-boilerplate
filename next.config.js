@@ -58,6 +58,7 @@ module.exports = {
 
             config.plugins.push(
                 new WorkboxPlugin.InjectManifest({
+                    maximumFileSizeToCacheInBytes: 5000000, // 5mb
                     swSrc: path.resolve('src', 'sw', 'index.ts'),
                     swDest: path.resolve(serviceWorkerDest),
                     dontCacheBustURLsMatching: /^\/_next\/static\//,
