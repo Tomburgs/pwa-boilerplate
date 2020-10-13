@@ -16,7 +16,7 @@ const schema = _schema as Schema;
 export default function handler(req: NextApiRequest, res: NextApiResponse): void {
     const { query: { id } } = req;
 
-    if (!(id in schema)) {
+    if (!(id as string in schema)) {
         res.status(404);
     }
 
