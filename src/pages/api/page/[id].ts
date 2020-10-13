@@ -14,14 +14,15 @@ const pages = _pages as Pages;
 const schema = _schema as Schema;
 
 export default function handler(req: NextApiRequest, res: NextApiResponse): void {
-    const { query: { id } } = req;
+    const { query } = req;
+    const id = query.id as string;
 
-    if (!(id as string in schema)) {
+    if (!(id in schema)) {
         res.status(404);
     }
 
-    const title = schema[id as string];
-    const content = pages[id as string];
+    const title = schema[id];
+    const content = pages[id];
 
     res.status(200).json({
         id,
