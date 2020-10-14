@@ -3,11 +3,8 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     allow:
       - dependency-type: "direct"
     reviewers:
       - "Tomburgs"
-    labels:
-      - "npm"
-      - "dependencies"
