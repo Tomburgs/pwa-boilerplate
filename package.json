@@ -37,7 +37,7 @@
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-flowtype": "4.6.0",
     "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-jsx-a11y": "6.3.1",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^1.6.1",
     "nodemon": "^2.0.4",
