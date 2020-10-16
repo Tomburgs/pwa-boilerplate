@@ -23,7 +23,7 @@
     "workbox-webpack-plugin": "^5.1.4"
   },
   "devDependencies": {
-    "@types/css-modules": "^1.0.0",
+    "@types/css-modules": "^1.0.1",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.52",
     "@types/react-dom": "^16.9.0",
