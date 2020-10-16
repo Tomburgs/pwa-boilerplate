@@ -8,7 +8,7 @@
     "html-react-parser": "^0.14.0",
     "next": "^9.5.4",
     "raw-loader": "^4.0.2",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
