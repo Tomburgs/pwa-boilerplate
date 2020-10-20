@@ -44,9 +44,7 @@ export default function Profile(): JSX.Element {
                           className={ followersIcon }
                         />
                         {
-                            followers === null
-                                ? <span className={ followersPlaceholder } />
-                                : followers
+                            followers ?? <span className={ followersPlaceholder } />
                         } Followers
                     </h3>
                 </div>

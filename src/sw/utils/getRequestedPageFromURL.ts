@@ -31,7 +31,8 @@ const getRequestedPageFromURL = (url: string): string | undefined => {
                     const requestedPathPiece = requestedPage[index];
 
                     return (
-                        manifestPathPiece === requestedPathPiece || /^\[\w+\]$/.test(manifestPathPiece)
+                        manifestPathPiece === requestedPathPiece
+                        || (manifestPathPiece.startsWith('[') && manifestPathPiece.endsWith(']'))
                     );
                 }
             );

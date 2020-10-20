@@ -26,10 +26,11 @@ const useImageState = (
 
     useEffect(() => {
         if (!src) {
-            return setImageState(IMAGE_NOT_SPECIFIED);
+            setImageState(IMAGE_NOT_SPECIFIED);
+            return;
         }
 
-        return setImageState(IMAGE_LOADING);
+        setImageState(IMAGE_LOADING);
     }, [src]);
 
     return [imageState, setImageState];
