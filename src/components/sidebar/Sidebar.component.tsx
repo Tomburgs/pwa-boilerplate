@@ -1,5 +1,5 @@
 import React from 'react';
-import useUser from 'hooks/useUser';
+import { useUser } from 'hooks/user';
 import Pages from 'components//pages';
 import Image from 'components/image';
 import Placeholder from 'components/placeholder';

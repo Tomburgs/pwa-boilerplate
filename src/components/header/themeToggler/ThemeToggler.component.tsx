@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback } from 'react';
 import Head from 'next/head';
-import useTheme from 'hooks/useTheme';
+import { useTheme } from 'hooks/theme';
 import Icon from 'components/icon';
 import { theme } from 'config';
 import styles from './ThemeToggler.module.scss';

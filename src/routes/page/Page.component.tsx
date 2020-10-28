@@ -3,7 +3,7 @@ import Head from 'next/head';
 import A2HS from 'components/a2hs';
 import Sidebar from 'components/sidebar';
 import Html from 'components/html';
-import usePageData from 'hooks/usePageData';
+import { usePageData, usePageDetails } from 'hooks/page';
 import styles from './Page.module.scss';
 
 const {
@@ -12,13 +12,43 @@ const {
     placeholder
 } = styles;
 
+export const addTitleTags = (title: string): JSX.Element => {
+    if (!title) {
+        return <></>;
+    }
+
+    return (
+        <>
+            <title>{ title }</title>
+            <meta name="og:title" content={ title } />
+        </>
+    );
+};
+
+export const addDescriptionTag = (description: string): JSX.Element => {
+    if (!description) {
+        return <></>;
+    }
+
+    return (
+        <meta
+          name="description"
+          property="og:description"
+          content={ description }
+        />
+    );
+};
+
 export default function Page(): JSX.Element {
-    const { title = '', content = '' } = usePageData();
+    const { title = '', description = '' } = usePageDetails();
+    const { content = '' } = usePageData();
 
     return (
         <>
             <Head>
-                { title && <title>{ title }</title> }
+                { addTitleTags(title) }
+                { addDescriptionTag(description) }
+                <meta name="robots" content="INDEX,FOLLOW" />
             </Head>
             <main className={ page }>
                 <div className={ pageContent }>
