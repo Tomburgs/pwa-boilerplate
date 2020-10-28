@@ -7,7 +7,10 @@ interface Pages {
 }
 
 interface Schema {
-    [key: string]: string
+    [key: string]: {
+        title: string,
+        description: string
+    }
 }
 
 const pages = _pages as Pages;
@@ -21,12 +24,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse): void
         res.status(404);
     }
 
-    const title = schema[id];
+    const { title, description } = schema[id];
     const content = pages[id];
 
     res.status(200).json({
         id,
         title,
+        description,
         content
     });
 }

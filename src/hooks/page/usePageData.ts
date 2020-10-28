@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { RootState } from 'stores';
 import { getPage, Page } from 'stores/pages';
 import { useDispatch, useSelector } from 'react-redux';
-import usePageId from 'hooks/usePageId';
+import { usePageId } from 'hooks/page';
 
 const usePageData = (): Page => {
     const dispatch = useDispatch();

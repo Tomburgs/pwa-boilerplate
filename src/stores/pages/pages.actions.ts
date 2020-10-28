@@ -1,13 +1,19 @@
 export const UPDATE_SCHEMA = 'UPDATE_SCHEMA';
 export const UPDATE_PAGES = 'UPDATE_PAGES';
 
+export interface PageDetails {
+    title: string,
+    description: string
+}
+
 export interface Schema {
-    [key: string]: string
+    [key: string]: PageDetails
 }
 
 export interface Page {
     id: string,
     title: string,
+    description: string,
     content: string
 }
 

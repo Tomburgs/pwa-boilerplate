@@ -1,8 +1,7 @@
 import React, { memo } from 'react';
 import { Schema } from 'stores/pages';
 import { injectClassNames } from 'utils/css';
-import useSchema from 'hooks/useSchema';
-import usePageId from 'hooks/usePageId';
+import { useSchema, usePageId } from 'hooks/page';
 import Link from 'next/link';
 
 type PageProps = {
@@ -47,7 +46,7 @@ export const PageItemList = (props: PageItemList): JSX.Element => {
     return (
         <>
             { Object.entries(schema).map(
-                ([url, name]) => (
+                ([url, { title: name }]) => (
                     <PageItem
                       key={ url }
                       { ...{

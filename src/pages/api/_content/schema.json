@@ -1,5 +1,14 @@
 {
-    "home": "PWA Boilerplate",
-    "why-pwa": "Why PWA?",
-    "get-started": "How to get started"
+    "home": {
+        "title": "PWA Boilerplate",
+        "description": "Progressive Web App boilerplate. Designed to help you start your next PWA project faster."
+    },
+    "why-pwa": {
+        "title": "Why PWA?",
+        "description": "What are the benefits of choosing PWA?"
+    },
+    "get-started": {
+        "title": "How to get started",
+        "description": "How to get started with PWA Boilerplate"
+    }
 }
