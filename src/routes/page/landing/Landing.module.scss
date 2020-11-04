@@ -1,0 +1,80 @@
+@use 'styles/variables/media';
+@use 'styles/variables/button';
+@use 'styles/variables/theme';
+
+.wrapper {
+    padding: var(--header-height) 0 0;
+    background-color: #E3879E;
+
+    @include theme.dark-mode {
+        background-color: #2e3191;
+    }
+}
+
+.landing {
+    --primary-text-color: #f2f2f7;
+    --secondary-text-color: #f3f3f7;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    grid-column-gap: 20px;
+    padding: var(--content-padding);
+    margin: 0 auto;
+    max-width: var(--content-max-width);
+
+    @include media.mobile {
+        grid-template-columns: auto;
+    }
+
+    &Text {
+        text-align: center;
+        max-width: 650px;
+        margin: 0 auto;
+
+        h1, p {
+            color: var(--primary-text-color);
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+
+    &NavigationWrapper {
+        display: block;
+        margin: 1rem auto 0;
+        text-align: center;
+
+        @include media.mobile {
+            grid-row: 3;
+        }
+
+        a {
+            --button-font-weight: 600;
+            --button-background: #000;
+            --button-hover: #000;
+
+            @include button.default;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--secondary-text-color);
+        }
+    }
+
+    &Image {
+        display: block;
+        margin: 0 auto;
+        width: fit-content;
+
+        @include media.after-mobile {
+            grid-column: 2;
+            grid-row: 1 / span 2;
+        }
+    }
+}

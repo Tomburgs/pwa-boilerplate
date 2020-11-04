@@ -43,14 +43,7 @@ export default memo(
         }, []);
 
         return (
-            <header className={ header }>
-                <nav>
-                    <div className={ headerControls }>
-                        <Logo />
-                        <ThemeToggler />
-                    </div>
-                    <Items />
-                </nav>
+            <>
                 <div className={ offline }>
                     <Icon
                       asset="Cloud-Slash"
@@ -58,7 +51,16 @@ export default memo(
                     />
                     You are currently browsing in offline mode.
                 </div>
-            </header>
+                <header className={ header }>
+                    <nav>
+                        <div className={ headerControls }>
+                            <Logo />
+                            <ThemeToggler />
+                        </div>
+                        <Items />
+                    </nav>
+                </header>
+            </>
         );
     }
 );

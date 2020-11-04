@@ -1,5 +1,7 @@
-@mixin dark-mode {
+@mixin dark-mode($property: &) {
     @at-root :global(html.dark-mode) {
-        @content;
+        #{$property} {
+            @content;
+        }
     }
 }

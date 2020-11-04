@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { injectClassNames } from 'utils/css';
 import styles from './Image.module.scss';
 
@@ -16,22 +16,34 @@ type ImageProps = {
     isPlaceholder?: boolean | null,
     src?: string,
     alt?: string,
+    height?: string,
+    width?: string,
+    loading?: 'lazy' | 'eager',
     className?: string
 };
 
 const useImageState = (
-    src: string
+    src: string,
+    ref: RefObject<HTMLImageElement>
 ): [string, (imageState: string) => void] => {
-    const [imageState, setImageState] = useState(IMAGE_LOADING);
+    const isLoaded = ref.current?.complete;
+
+    const initialState = isLoaded ? IMAGE_LOADED : IMAGE_LOADING;
+    const [imageState, setImageState] = useState(initialState);
 
     useEffect(() => {
+        if (isLoaded) {
+            setImageState(IMAGE_LOADED);
+            return;
+        }
+
         if (!src) {
             setImageState(IMAGE_NOT_SPECIFIED);
             return;
         }
 
         setImageState(IMAGE_LOADING);
-    }, [src]);
+    }, [isLoaded, src]);
 
     return [imageState, setImageState];
 };
@@ -40,10 +52,17 @@ export default function Image(props: ImageProps): JSX.Element {
     const {
         src = '',
         alt = '',
+        height,
+        width,
+        loading = 'lazy',
         className = '',
         isPlaceholder = false
     } = props;
-    const [imageState, setImageState] = useImageState(src);
+    const ref = useRef<HTMLImageElement>(null);
+    const [imageState, setImageState] = useImageState(src, ref);
+
+    const onLoad = useCallback(() => setImageState(IMAGE_LOADED), [setImageState]);
+    const onError = useCallback(() => setImageState(IMAGE_NOT_FOUND), [setImageState]);
 
     const imageStyle = isPlaceholder
         ? placeholder : styles[imageState];
@@ -64,8 +83,12 @@ export default function Image(props: ImageProps): JSX.Element {
                 <img
                   src={ src }
                   alt={ alt }
-                  onLoad={ () => setImageState(IMAGE_LOADED) }
-                  onError={ () => setImageState(IMAGE_NOT_FOUND) }
+                  ref={ ref }
+                  height={ height }
+                  width={ width }
+                  loading={ loading }
+                  onLoad={ onLoad }
+                  onError={ onError }
                 />
             ) }
         </div>

@@ -1,13 +1,16 @@
 import React from 'react';
 import Head from 'next/head';
+import Landing from 'routes/page/landing';
 import A2HS from 'components/a2hs';
 import Sidebar from 'components/sidebar';
 import Html from 'components/html';
-import { usePageData, usePageDetails } from 'hooks/page';
+import { usePageData, usePageDetails, usePageId } from 'hooks/page';
+import { injectClassNames } from 'utils/css';
 import styles from './Page.module.scss';
 
 const {
     page,
+    pageLanding,
     pageContent,
     placeholder
 } = styles;
@@ -40,8 +43,12 @@ export const addDescriptionTag = (description: string): JSX.Element => {
 };
 
 export default function Page(): JSX.Element {
+    const id = usePageId();
     const { title = '', description = '' } = usePageDetails();
     const { content = '' } = usePageData();
+
+    const isHome = id === 'home';
+    const classNames = injectClassNames(page, [pageLanding, isHome]);
 
     return (
         <>
@@ -50,23 +57,26 @@ export default function Page(): JSX.Element {
                 { addDescriptionTag(description) }
                 <meta name="robots" content="INDEX,FOLLOW" />
             </Head>
-            <main className={ page }>
-                <div className={ pageContent }>
-                    <A2HS />
+            <main className={ classNames }>
+                { isHome && <Landing /> }
+                <section>
                     <div className={ pageContent }>
-                        { content
-                            ? <Html content={ content } />
-                            : (
-                                <>
-                                  <figure className={ placeholder } />
-                                  <figure className={ placeholder } />
-                                  <figure className={ placeholder } />
-                                </>
-                            )
-                        }
+                        <A2HS />
+                        <div className={ pageContent }>
+                            { content
+                                ? <Html content={ content } />
+                                : (
+                                    <>
+                                      <figure className={ placeholder } />
+                                      <figure className={ placeholder } />
+                                      <figure className={ placeholder } />
+                                    </>
+                                )
+                            }
+                        </div>
                     </div>
-                </div>
-                <Sidebar />
+                    <Sidebar />
+                </section>
             </main>
         </>
     );

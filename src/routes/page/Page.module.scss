@@ -2,12 +2,26 @@
 @use 'styles/variables/media';
 
 .page {
-    display: grid;
-    grid-template-columns: 1fr minmax(var(--sidebar-width), 0);
-    grid-column-gap: 2rem;
+    > section {
+        display: grid;
+        grid-template-columns: 1fr minmax(var(--sidebar-width), 0);
+        grid-column-gap: 2rem;
+    }
 
-    @include media.mobile {
-        grid-template-columns: auto;
+    &Landing {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+
+        > section {
+            padding: var(--content-padding);
+            margin: 0 auto;
+            max-width: var(--content-max-width);
+
+            @include media.mobile {
+                grid-template-columns: auto;
+            }
+        }
     }
 
     &Content {

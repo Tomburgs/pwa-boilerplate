@@ -32,7 +32,7 @@ export const PageItem = (props: PageItemProps): JSX.Element => {
 
     return (
         <li className={ className }>
-            <Link href="/[page]" as={ `/${url}` }>
+            <Link href={ `/${url}` }>
                 { name }
             </Link>
         </li>
