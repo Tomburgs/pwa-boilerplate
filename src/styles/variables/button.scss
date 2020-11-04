@@ -2,7 +2,7 @@
     display: inline-block;
     cursor: pointer;
     color: var(--primary-text-color);
-    font-weight: 500;
+    font-weight: var(--button-font-weight);
     font-size: var(--button-font-size);
     padding: var(--button-padding);
     border-radius: var(--button-radius);

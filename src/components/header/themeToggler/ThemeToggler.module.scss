@@ -18,6 +18,10 @@
     height: env(safe-area-inset-top);
     background-color: var(--status-bar-highlight-color);
     margin: 0;
+
+    @include theme.dark-mode {
+        display: none;
+    }
 }
 
 .themeToggler {
@@ -51,16 +55,10 @@
 
         &:first-child { animation-name: moveOut; }
         &:last-child { animation-name: moveIn; }
-    }
-}
 
-@include theme.dark-mode {
-    .statusBarHighlight {
-        display: none;
-    }
-
-    .themeToggler > * {
-        &:first-child { animation-name: moveIn; }
-        &:last-child { animation-name: moveOut; }
+        @include theme.dark-mode {
+            &:first-child { animation-name: moveIn; }
+            &:last-child { animation-name: moveOut; }
+        }
     }
 }

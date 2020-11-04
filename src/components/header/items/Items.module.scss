@@ -1,4 +1,5 @@
 @use 'styles/variables/media';
+@use 'styles/variables/theme';
 
 .items {
     display: flex;
@@ -23,21 +24,34 @@
 
     a {
         color: var(--primary-text-color);
+        font-weight: 500;
     }
 
     > li {
         font-size: 18px;
-        margin: 0 12px;
+        border-radius: 20px;
+        padding: 10px 20px;
+        margin: 0 5px;
+        transition: background-color 200ms;
 
         &:last-child {
             @include media.after-mobile {
-                margin: 0 0 0 12px;
+                margin: 0 0 0 5px;
             }
         }
     }
 }
 
-.active > a {
-    font-weight: 500;
-    color: var(--highlight-color);
+.active {
+    --background-color: rgba(0, 0, 0, .05);
+
+    @include theme.dark-mode {
+        --background-color: rgba(255, 255, 255, .05);
+    }
+
+    background-color: var(--background-color);
+
+    > a {
+        color: var(--highlight-color);
+    }
 }
