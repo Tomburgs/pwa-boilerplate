@@ -13,7 +13,7 @@
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "sass": "^1.28.0",
+    "sass": "^1.29.0",
     "typescript": "~4.0.5",
     "workbox-core": "^5.1.4",
     "workbox-expiration": "^5.1.4",
