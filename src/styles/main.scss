@@ -53,6 +53,7 @@ html {
         var(--header-navigation-height)
         + var(--offline-notification-height)
         + var(--header-spacing)
+        + env(safe-area-inset-top)
     );
     --header-spacing: 0px;
     --header-navigation-height: 70px;
@@ -74,7 +75,6 @@ html {
     --footer-height: calc(
         var(--footer-content-height)
         + 2 * var(--content-padding)
-        + env(safe-area-inset-bottom)
     );
     @include media.mobile { --footer-content-height: 40px; }
 
