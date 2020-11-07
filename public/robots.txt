@@ -1,3 +1,5 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow: /profile
+Disallow:
+
+Sitemap: https://pwa-boilerplate.com/_next/static/sitemap.xml
