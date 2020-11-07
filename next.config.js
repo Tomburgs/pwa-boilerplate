@@ -1,7 +1,12 @@
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const generateSitemap = require('./scripts/sitemap');
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+
+const domain = 'https://pwa-boilerplate.com';
+
+const sitemapDest = path.resolve('.next/static');
 
 const serviceWorkerPath = 'static/sw.js';
 const serviceWorkerUrl = `/_next/${serviceWorkerPath}`;
@@ -24,6 +29,10 @@ module.exports = {
                 loader: 'raw-loader'
             }
         );
+
+        if (isServer && !dev) {
+            generateSitemap(domain, sitemapDest);
+        }
 
         if (!isServer) {
             const additionalManifestEntries = fs
