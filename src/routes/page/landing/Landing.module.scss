@@ -16,7 +16,7 @@
     --secondary-text-color: #f3f3f7;
 
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr auto;
     grid-template-rows: auto 1fr;
     grid-column-gap: 20px;
     padding: var(--content-padding);

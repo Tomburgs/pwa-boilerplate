@@ -4,7 +4,7 @@ import Landing from 'routes/page/landing';
 import A2HS from 'components/a2hs';
 import Sidebar from 'components/sidebar';
 import Html from 'components/html';
-import { usePageData, usePageDetails, usePageId } from 'hooks/page';
+import { usePageData, usePageDetails } from 'hooks/page';
 import { injectClassNames } from 'utils/css';
 import styles from './Page.module.scss';
 
@@ -14,6 +14,10 @@ const {
     pageContent,
     placeholder
 } = styles;
+
+type PageProps = {
+    isLanding?: boolean
+};
 
 export const addTitleTags = (title: string): JSX.Element => {
     if (!title) {
@@ -42,13 +46,12 @@ export const addDescriptionTag = (description: string): JSX.Element => {
     );
 };
 
-export default function Page(): JSX.Element {
-    const id = usePageId();
+export default function Page(props: PageProps): JSX.Element {
+    const { isLanding } = props;
     const { title = '', description = '' } = usePageDetails();
     const { content = '' } = usePageData();
 
-    const isHome = id === 'home';
-    const classNames = injectClassNames(page, [pageLanding, isHome]);
+    const classNames = injectClassNames(page, [pageLanding, isLanding]);
 
     return (
         <>
@@ -58,7 +61,7 @@ export default function Page(): JSX.Element {
                 <meta name="robots" content="INDEX,FOLLOW" />
             </Head>
             <main className={ classNames }>
-                { isHome && <Landing /> }
+                { isLanding && <Landing /> }
                 <section>
                     <div className={ pageContent }>
                         <A2HS />
