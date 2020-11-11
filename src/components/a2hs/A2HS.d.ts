@@ -10,6 +10,10 @@ export interface BeforeInstallPromptEvent extends Event {
 }
 
 declare global {
+    interface Window {
+        pwaInstallPrompt: BeforeInstallPromptEvent | undefined
+    }
+
     interface WindowEventMap {
         'beforeinstallprompt': BeforeInstallPromptEvent
     }

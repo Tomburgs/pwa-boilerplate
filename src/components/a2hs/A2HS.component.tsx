@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { isMobile, browserStorage } from 'utils/browser';
+import { getWindowProperty, isMobile, browserStorage } from 'utils/browser';
 import { checkMediaProperty } from 'utils/css';
 import { BeforeInstallPromptEvent } from './A2HS';
 import IOSInstructions from './IOSInstructions';
@@ -24,12 +24,15 @@ type InstallState = {
 }
 
 export default class A2HS extends PureComponent<unknown, InstallState> {
-    installEvent: BeforeInstallPromptEvent | undefined;
-
     state = {
         isOpen: (
-            isMobile.iOS()
-            && !checkMediaProperty(DISPLAY_STANDALONE)
+            // If PWA prompt exists.
+            !!getWindowProperty().pwaInstallPrompt
+            || (
+                // Or is iOS and isn't installed.
+                isMobile.iOS()
+                && !checkMediaProperty(DISPLAY_STANDALONE)
+            )
         )
     };
 
@@ -53,17 +56,17 @@ export default class A2HS extends PureComponent<unknown, InstallState> {
     installListener = (event: BeforeInstallPromptEvent): void => {
         event.preventDefault();
 
-        this.installEvent = event;
+        self.pwaInstallPrompt = event;
         this.setState({ isOpen: true });
     }
 
     install = (): void => {
-        if (!this.installEvent) {
+        if (!self.pwaInstallPrompt) {
             return;
         }
 
-        this.installEvent.prompt();
-        this.installEvent.userChoice.then(
+        self.pwaInstallPrompt.prompt();
+        self.pwaInstallPrompt.userChoice.then(
             choice => {
                 if (choice.outcome === InstallAccepted) {
                     this.setState({ isOpen: false });
