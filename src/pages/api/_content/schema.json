@@ -1,14 +1,14 @@
 {
     "home": {
         "title": "PWA Boilerplate",
-        "description": "Progressive Web App boilerplate. Designed to help you start your next PWA project faster."
+        "description": "Progressive Web App boilerplate written in TypeScript, React, and Next. Designed to help you start your next PWA project faster."
     },
     "why-pwa": {
         "title": "Why PWA?",
-        "description": "What are the benefits of choosing PWA?"
+        "description": "What are the benefits of choosing PWA, what can PWA do, and more."
     },
     "get-started": {
         "title": "How to get started",
-        "description": "How to get started with PWA Boilerplate"
+        "description": "How to get started with PWA Boilerplate."
     }
 }
