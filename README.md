@@ -1,7 +1,6 @@
-<div style="width: 100%; text-align: center;">
+<p align="center">
     <img
-      width="100%"
-      style="max-width: 600px;"
+      width="600px"
       alt="PWA Boilerplate"
       src="https://github.com/Tomburgs/pwa-boilerplate/raw/master/docs/pwa-boilerplate.png"
     />
