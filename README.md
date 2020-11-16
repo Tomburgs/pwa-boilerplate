@@ -1,4 +1,11 @@
-![PWA Boilerplate](./docs/pwa-boilerplate.png)
+<div style="width: 100%; text-align: center;">
+    <img
+      width="100%"
+      style="max-width: 600px;"
+      alt="PWA Boilerplate"
+      src="https://github.com/Tomburgs/pwa-boilerplate/raw/master/docs/pwa-boilerplate.png"
+    />
+</div>
 <p align="center">
     <img alt="Build Status" src="https://github.com/tomburgs/pwa-boilerplate/workflows/Build/badge.svg">
     <img alt="License" src="https://img.shields.io/github/license/Tomburgs/pwa-boilerplate?label=License">
