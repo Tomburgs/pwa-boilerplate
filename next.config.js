@@ -64,7 +64,7 @@ module.exports = {
                         }
                     ];
                 }, []);
-            
+
             /*
              * In development mode pre-cache files up-to 5MB
              */
