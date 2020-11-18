@@ -1,12 +1,12 @@
-const fs = require('fs');
 const path = require('path');
+const { promises: fs, existsSync } = require('fs');
 const { toXML } = require('jstoxml');
 
-module.exports = async (getPagesFunctions, baseUrl, outputDir) => {
+module.exports = async (getPagesFunctions, options, outputDir) => {
     const list = [];
 
     for (getPages of getPagesFunctions) {
-        const pages = await getPages(baseUrl);
+        const pages = await getPages(options);
 
         list.push(...pages);
     }
@@ -17,13 +17,15 @@ module.exports = async (getPagesFunctions, baseUrl, outputDir) => {
         _content: list.map(url => ({ url }))
     }, { header: true });
 
-    if (!fs.existsSync(outputDir)) {
-        fs.mkdirSync(outputDir, { recursive: true });
+    const doesOutputDirExist = existsSync(outputDir);
+
+    if (!doesOutputDirExist) {
+        await fs.mkdir(outputDir, { recursive: true });
     }
 
     const output = path.resolve(outputDir, 'sitemap.xml');
 
-    fs.writeFileSync(output, sitemap);
+    await fs.writeFile(output, sitemap);
 
     console.log('✨ Sitemap generated');
 };

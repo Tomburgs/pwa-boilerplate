@@ -25,7 +25,7 @@ const root = process.cwd();
  *
  * Ignores api directory and anything that starts with _, [ or .
  */
-const addStaticPages = async (baseUrl) => {
+const addStaticPages = async ({ baseUrl, skipIndex }) => {
     const getDirents = (path) => fs.readdir(path, { withFileTypes: true });
 
     const direntsToRoutes = async (dirents, directory) => {
@@ -49,6 +49,11 @@ const addStaticPages = async (baseUrl) => {
             }
 
             const route = getRouteFromAssetPath(`/${name}`, '.tsx');
+            const isNotIndexable = skipIndex.includes(route);
+
+            if (isNotIndexable) {
+                continue;
+            }
 
             routes.push({ loc: `${baseUrl}${route}` });
         }
@@ -65,15 +70,15 @@ const addStaticPages = async (baseUrl) => {
 /*
  * Get our api pages
  */
-const addDynamicPages = async (baseUrl) => {
+const addDynamicPages = async ({ baseUrl }) => {
     const schema = await require(path.resolve(root, 'src/pages/api/_content/schema.json'));
 
     return Object.keys(schema).map(page => ({ loc: `${baseUrl}/${page}` }));
 };
 
-module.exports = (baseUrl, output) => (
+module.exports = (...args) => (
     generateSitemap([
         addStaticPages,
         addDynamicPages
-    ], baseUrl, output)
+    ], ...args)
 );
