@@ -4,9 +4,10 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
-const domain = 'https://pwa-boilerplate.com';
+const baseUrl = 'https://pwa-boilerplate.com';
 
 const sitemapDest = path.resolve('.next/static');
+const skipIndex = ['/profile'];
 
 const serviceWorkerPath = 'static/sw.js';
 const serviceWorkerUrl = `/_next/${serviceWorkerPath}`;
@@ -31,7 +32,10 @@ module.exports = {
         );
 
         if (isServer && !dev) {
-            generateSitemap(domain, sitemapDest);
+            generateSitemap({
+                baseUrl,
+                skipIndex
+            }, sitemapDest);
         }
 
         if (!isServer) {
