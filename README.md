@@ -36,3 +36,10 @@ Check out our demo @ [pwa-boilerplate.com](https://pwa-boilerplate.com)!
 
 You can get started by cloning this repo.
 Our docs & guidelines can be found [here](docs/)
+
+## Supporters
+
+Many thanks to the people below for supporting this project! 🎉
+
+[![Stargazers repo roster for @Tomburgs/pwa-boilerplate](https://reporoster.com/stars/Tomburgs/pwa-boilerplate)](https://github.com/Tomburgs/pwa-boilerplate/stargazers)
+[![Forkers repo roster for @Tomburgs/pwa-boilerplate](https://reporoster.com/forks/Tomburgs/pwa-boilerplate)](https://github.com/Tomburgs/pwa-boilerplate/network/members)
