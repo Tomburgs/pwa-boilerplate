@@ -4370,10 +4370,10 @@ jsonfile@^4.0.0:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
-jstoxml@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/jstoxml/-/jstoxml-2.0.1.tgz#91544c5a9be54fb73e49d2ef69dadd3ef5bc7109"
-  integrity sha512-8q2rTX9YXxIBO0EBPUgM2llqYJGztMYEZC4GQTgaeRyL3qaijm+9w5tphLVrkfNgYHnp35eAwR7vnMtM2BGdvA==
+jstoxml@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/jstoxml/-/jstoxml-2.0.2.tgz#df3cd9f94bc3a2fe8fff1c04b128f9c4c872e8b9"
+  integrity sha512-CTJ7z4qZU02ULuy1lfWmHl41CBiymkQn0Z0xkfVGFWn7Yd/U7mvGArEbWMKz09l3dya83m5hL2KDc9FpebhuLw==
 
 "jsx-ast-utils@^2.4.1 || ^3.0.0", jsx-ast-utils@^3.1.0:
   version "3.1.0"
