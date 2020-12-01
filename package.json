@@ -21,7 +21,7 @@
     "workbox-precaching": "^5.1.4",
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
-    "workbox-webpack-plugin": "^5.1.4"
+    "workbox-webpack-plugin": "^6.0.0"
   },
   "devDependencies": {
     "@types/css-modules": "^1.0.1",
