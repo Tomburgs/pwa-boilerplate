@@ -74,7 +74,8 @@ export default class Router {
     }
 
     handleFetch = async (event: FetchEvent): Promise<void> => {
-        const { request: { url, destination } } = event;
+        const { request } = event;
+        const { url, destination } = request;
 
         if (this._ignoredRoutes && this._ignoredRoutes.test(url)) {
             return;
@@ -88,7 +89,7 @@ export default class Router {
             return;
         }
 
-        const response = this._workboxRouter.handleRequest(event);
+        const response = this._workboxRouter.handleRequest({ request, event });
 
         if (!response) {
             return;

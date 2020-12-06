@@ -16,12 +16,12 @@
     "redux-thunk": "^2.3.0",
     "sass": "^1.29.0",
     "typescript": "~4.1.2",
-    "workbox-core": "^5.1.4",
-    "workbox-expiration": "^5.1.4",
-    "workbox-precaching": "^5.1.4",
-    "workbox-routing": "^5.1.4",
-    "workbox-strategies": "^5.1.4",
-    "workbox-webpack-plugin": "^5.1.4"
+    "workbox-core": "^6.0.2",
+    "workbox-expiration": "^6.0.2",
+    "workbox-precaching": "^6.0.2",
+    "workbox-routing": "^6.0.2",
+    "workbox-strategies": "^6.0.2",
+    "workbox-webpack-plugin": "^6.0.2"
   },
   "devDependencies": {
     "@types/css-modules": "^1.0.1",
