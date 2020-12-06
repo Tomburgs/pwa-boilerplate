@@ -54,7 +54,7 @@ const { runtime: CACHE_NAME_RUNTIME } = cacheNames;
 /*
  * Generate documents to pre-fetch
  */
-const manifest = getBuildManifest(); 
+const manifest = getBuildManifest();
 const buildManifestPages = getBuildManifestPages();
 const revision = `${Date.now()}`;
 
@@ -79,11 +79,7 @@ const documentFilesToCache = buildManifestPages.reduce<string[]>(
     []
 ).map(url => ({
     url,
-    /*
-     * This is done due to incorrect revision type definition
-     * in workbox-webpack-plugin, this has been fixed in v6.
-     */
-    revision: (null as unknown) as string
+    revision: null
 }));
 
 /*
