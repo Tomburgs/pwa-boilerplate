@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { createElement } from 'react';
 import parser, {
     domToReact,
     attributesToProps,
     HTMLReactParserOptions
 } from 'html-react-parser';
+import { Element } from 'domhandler/lib/node';
 import Image from 'components/image';
 import { Style } from 'components/html/modifiers';
 
@@ -17,19 +18,18 @@ export const components: { [key: string]: any } = {
 };
 
 export const options: HTMLReactParserOptions = {
-    replace: ({ name = '', attribs, children }) => {
-        if (!attribs) {
-            return;
-        }
+    replace: node => {
+        if (node instanceof Element && node.attribs) {
+            const { name = '', attribs, children } = node;
+            const component = components[name];
 
-        const Component = components[name];
-
-        if (Component) {
-            return (
-                <Component { ...attributesToProps(attribs) }>
-                    { children && domToReact(children, options) }
-                </Component>
-            );
+            if (component) {
+                return createElement(
+                    component,
+                    attributesToProps(attribs),
+                    children && domToReact(children, options)
+                );
+            }
         }
     }
 };
