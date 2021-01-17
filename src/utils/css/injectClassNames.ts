@@ -3,7 +3,7 @@ type Args = Array<string | [
     any
 ]>;
 
-export default (...args: Args): string => (
+const injectClassNames = (...args: Args): string => (
     args.reduce((classes: string[], entry) => {
         if (typeof entry === 'string') {
             return [...classes, entry];
@@ -16,3 +16,5 @@ export default (...args: Args): string => (
             : classes;
     }, []).join(' ')
 );
+
+export default injectClassNames;
