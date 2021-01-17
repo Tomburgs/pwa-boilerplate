@@ -1,5 +1,5 @@
 
-export const getWindowProperty = (): Window  => (
+const getWindowProperty = (): Window => (
     typeof window !== 'undefined' ? window : {} as Window
 );
 
