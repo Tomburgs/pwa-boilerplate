@@ -1,7 +1,7 @@
 import store from 'stores';
 import { showNotification } from 'stores/notifications';
 
-export default (err: Error): Promise<any> => {
+const handleFetchError = (err: Error): Promise<any> => {
     // eslint-disable-next-line
     console.error(err);
 
@@ -14,3 +14,5 @@ export default (err: Error): Promise<any> => {
 
     return Promise.reject();
 };
+
+export default handleFetchError;

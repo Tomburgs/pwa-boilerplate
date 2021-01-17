@@ -1,6 +1,6 @@
 import { getWindowProperty } from 'utils/browser';
 
-export default (mediaQueryString: string): boolean => {
+const checkMediaProperty = (mediaQueryString: string): boolean => {
     const { matchMedia } = getWindowProperty();
 
     return (
@@ -9,3 +9,5 @@ export default (mediaQueryString: string): boolean => {
         || false
     );
 };
+
+export default checkMediaProperty;
