@@ -1,10 +1,10 @@
 import React, { createElement } from 'react';
 import parser, {
-    Element,
     domToReact,
     attributesToProps,
     HTMLReactParserOptions
 } from 'html-react-parser';
+import { Element } from 'domhandler/lib/node';
 import Image from 'components/image';
 import { Style } from 'components/html/modifiers';
 
