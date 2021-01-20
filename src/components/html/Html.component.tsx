@@ -18,9 +18,13 @@ export const components: { [key: string]: any } = {
 };
 
 export const options: HTMLReactParserOptions = {
-    replace: node => {
-        if (node instanceof Element && node.attribs) {
-            const { name = '', attribs, children } = node;
+    /*
+     * Node set as `any` due to babel es5 transpilation which breaks `instanceof`.
+     * Instead of checking `instanceof` we check constructor name.
+     */
+    replace: (node: any) => {
+        if (node.constructor.name === 'Element' && node.attribs) {
+            const { name = '', attribs, children } = node as Element;
             const component = components[name];
 
             if (component) {
