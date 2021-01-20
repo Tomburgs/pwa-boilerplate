@@ -1,10 +1,10 @@
 import React, { createElement } from 'react';
 import parser, {
+    Element,
     domToReact,
     attributesToProps,
     HTMLReactParserOptions
 } from 'html-react-parser';
-import { Element } from 'domhandler/lib/node';
 import Image from 'components/image';
 import { Style } from 'components/html/modifiers';
 
@@ -20,10 +20,10 @@ export const components: { [key: string]: any } = {
 export const options: HTMLReactParserOptions = {
     /*
      * Node set as `any` due to babel es5 transpilation which breaks `instanceof`.
-     * Instead of checking `instanceof` we check constructor name.
+     * Instead of checking `instanceof` we check `attribs`.
      */
     replace: (node: any) => {
-        if (node.constructor.name === 'Element' && node.attribs) {
+        if (node.attribs) {
             const { name = '', attribs, children } = node as Element;
             const component = components[name];
 
