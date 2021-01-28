@@ -5,7 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@svgr/webpack": "5.5.0",
-    "html-react-parser": "^1.2.1",
+    "html-react-parser": "^1.2.3",
     "jstoxml": "^2.0.3",
     "next": "^10.0.5",
     "raw-loader": "^4.0.2",
