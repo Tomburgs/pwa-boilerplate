@@ -7275,10 +7275,10 @@ workbox-cacheable-response@^6.0.2:
   dependencies:
     workbox-core "^6.0.2"
 
-workbox-core@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/workbox-core/-/workbox-core-6.0.2.tgz#2f865cfe633890b4210fd6d6fdb049a6daed0914"
-  integrity sha512-Ksl6qeikGb+BOCILoCUJGxwlEQOeeqdpOnpOr9UDt3NtacPYbfYBmpYpKArw5DFWK+5geBsFqgUUlXThlCYfKQ==
+workbox-core@^6.0.2, workbox-core@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/workbox-core/-/workbox-core-6.1.0.tgz#2671b64f76550e83a4c2202676b67ce372e10881"
+  integrity sha512-s3KqTJfBreO4xCZpR2LB5p/EknAx8eg0QumKiIgxM4hRO0RtwS2pJvTieNEM23X3RqxRhqweriLD8To19KUvjg==
 
 workbox-expiration@^6.0.2:
   version "6.0.2"
@@ -7332,12 +7332,12 @@ workbox-recipes@^6.0.2:
     workbox-routing "^6.0.2"
     workbox-strategies "^6.0.2"
 
-workbox-routing@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/workbox-routing/-/workbox-routing-6.0.2.tgz#8380bc322a2b1c44978df8ff6ae4e4d723f4e3f8"
-  integrity sha512-iQ9ch3fL1YpztDLfHNURaHQ0ispgPCdzWmZZhtSHUyy/+YkTlIiDVTbOQCIpHIrWlKQiim6X3K2ItIy1FW9+wA==
+workbox-routing@^6.0.2, workbox-routing@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/workbox-routing/-/workbox-routing-6.1.0.tgz#f885cb7801e2c9c5678f197656cf27a2b649c1d5"
+  integrity sha512-FXQ5cwb6Mk90fC0rfQLX0pN+r/N4eBafwkh/QanJUq0e6jMPdDFLrlsikZL/0LcXEx+yAkWLytoiS+d2HOEBOw==
   dependencies:
-    workbox-core "^6.0.2"
+    workbox-core "^6.1.0"
 
 workbox-strategies@^6.0.2:
   version "6.0.2"
