@@ -50,22 +50,27 @@ After this, run the `yarn install` command to install node modules.
 
 You can safely remove the following files & directories.
 These were only necessary to showcase features such as caching:
-    - src/pages/api
-    - src/pages/[page].tsx
-    - src/pages/pages.tsx
-    - src/routes/pageList
-    - public/api
+
+- src/pages/api
+- src/pages/[page].tsx
+- src/pages/pages.tsx
+- src/routes/pageList
+- public/api
 
 After this you will have a couple of issues:
-    - The homepage will have infinite placeholders where content used to be.
-    - There will be infinite placeholders on the sidebar under "Pages" text.
-    - The "Pages" header item will link you to a 404 page.
+
+- The homepage will have infinite placeholders where content used to be.
+- There will be infinite placeholders on the sidebar under "Pages" text.
+- The "Pages" header item will link you to a 404 page.
 
 In order to fix these, you will want to modify the following files:
-    - src/routes/page/Page.component.tsx - This file is responsible for the infinite placeholders on Homepage.
-    - src/components/sidebar/Sidebar.component.tsx - This file is responsible for the infinite placeholders on the Sidebar.
-    - src/components/pages - After modifying Sidebar to not use it, this component can be safely removed.
-    - src/components/header/items/Items.component.tsx - Remove "Pages" link.
-    - src/stores/index.ts - Modify this to not include the pages reducer anymore.
-    - src/stores/pages - Remove the pages redux store.
-    - src/hooks/page - These were the hooks responsible for interacting with & fetching the page content.
+
+- src/routes/page/Page.component.tsx - This file is responsible for the infinite placeholders on Homepage.
+- src/components/sidebar/Sidebar.component.tsx - This file is responsible for the infinite placeholders on the Sidebar.
+- src/components/pages - After modifying Sidebar to not use it, this component can be safely removed.
+- src/components/header/items/Items.component.tsx - Remove "Pages" link.
+- src/stores/index.ts - Modify this to not include the pages reducer anymore.
+- src/stores/pages - Remove the pages redux store.
+- src/hooks/page - These were the hooks responsible for interacting with & fetching the page content.
+
+
