@@ -2,93 +2,93 @@
 @use 'styles/variables/theme';
 
 .header {
-    --header-color: var(--primary-block-color);
+  --header-color: var(--primary-block-color);
+  background-color: var(--header-color);
+  box-shadow: var(--shadow);
+  color: var(--primary-text-color);
 
-    display: flex;
-    flex-flow: column;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
+  display: flex;
+  flex-flow: column;
+  height: var(--header-navigation-height);
+  left: 0;
+  padding: env(safe-area-inset-top) 0 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 10;
+
+  @include media.after-mobile {
+    --header-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: saturate(50%) blur(20px);
+    border-radius: calc(var(--header-navigation-height) / 2);
+    box-sizing: border-box;
+    left: 50%;
+    margin: 0 auto;
+    max-width: var(--content-max-width);
+    padding: 0 var(--content-padding);
+
+    top: calc(var(--header-spacing) / 2 + var(--offline-notification-height));
+    transform: translateX(-50%);
+    width: calc(100vw - var(--content-padding) * 2);
+
+    @include theme.dark-mode {
+      --header-color: rgba(44, 44, 46, 0.8);
+    }
+  }
+
+  nav {
+    box-sizing: border-box;
     height: var(--header-navigation-height);
-    width: 100vw;
-    background-color: var(--header-color);
-    color: var(--primary-text-color);
-    box-shadow: var(--shadow);
-    padding: env(safe-area-inset-top) 0 0;
+    margin: 0 auto;
+    max-width: var(--content-max-width);
+    padding: 0 var(--content-padding);
+    width: 100%;
 
     @include media.after-mobile {
-        --header-color: rgba(255, 255, 255, .8);
-
-        top: calc(var(--header-spacing) / 2 + var(--offline-notification-height));
-        box-sizing: border-box;
-        margin: 0 auto;
-        padding: 0 var(--content-padding);
-        border-radius: calc(var(--header-navigation-height) / 2);
-        width: calc(100vw - var(--content-padding) * 2);
-        max-width: var(--content-max-width);
-        backdrop-filter: saturate(50%) blur(20px);
-        left: 50%;
-        transform: translateX(-50%);
-
-        @include theme.dark-mode {
-            --header-color: rgba(44, 44, 46, .8);
-        }
+      display: grid;
+      grid-column-gap: 50px;
+      grid-template-columns: 1fr 1fr;
     }
+  }
 
-    nav {
-        box-sizing: border-box;
-        height: var(--header-navigation-height);
-        width: 100%;
-        max-width: var(--content-max-width);
-        margin: 0 auto;
-        padding: 0 var(--content-padding);
+  &Controls {
+    align-items: center;
+    display: flex;
+    height: 100%;
 
-        @include media.after-mobile {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-column-gap: 50px;
-        }
+    @include media.mobile {
+      justify-content: center;
     }
-
-    &Controls {
-        display: flex;
-        align-items: center;
-        height: 100%;
-
-        @include media.mobile {
-            justify-content: center;
-        }
-    }
+  }
 }
 
 .offline {
-    position: fixed;
-    top: 0;
-    z-index: 10;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: var(--offline-notification-height);
-    font-size: 15px;
-    box-shadow: var(--shadow);
-    background-color: #EDDE5D;
-    color: black;
+  align-items: center;
+  background-color: #edde5d;
+  box-shadow: var(--shadow);
+  color: #000;
+  display: none;
+  font-size: 15px;
+  justify-content: center;
+  min-height: var(--offline-notification-height);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 
-    @include media.mobile {
-        top: var(--header-navigation-height);
-    }
+  @include media.mobile {
+    top: var(--header-navigation-height);
+  }
 
-    &Icon {
-        --icon-size: 20px;
+  &Icon {
+    --icon-size: 20px;
 
-        margin: 0 5px 0;
-    }
+    margin: 0 5px;
+  }
 }
 
 @at-root html:global(.offline) {
-    .offline {
-        display: flex;
-    }
+  .offline {
+    display: flex;
+  }
 }

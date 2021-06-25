@@ -1,57 +1,61 @@
 @use 'raleway' as raleway;
 
-$extensionMap: ("ttf": "truetype", "otf": "opentype");
+$extension-map: ('ttf': 'truetype', 'otf': 'opentype');
 
 @function _get-font-path($directory, $name, $ext) {
-    @return $directory + '/' + $name + '.' + $ext;
+  @return $directory + '/' + $name + '.' + $ext;
 }
 
 @function _get-format($ext) {
-    $alias: map-get($extensionMap, $ext);
+  $alias: map-get($extension-map, $ext);
 
-    @return $alias or $ext;
+  @return $alias or $ext;
 }
 
 @function _get-variable-font-name($name) {
-    @return $name + ' VF';
+  @return $name + ' VF';
 }
 
 @mixin _include-fonts($name, $vfont, $fonts, $ext) {
-    $directory: to-lower-case($name);
-    $format: _get-format($ext);
+  $directory: to-lower-case($name);
+  $format: _get-format($ext);
+
+  $url: _get-font-path($directory, $vfont, $ext);
+
+  @font-face {
+    font-display: swap;
+    font-family: _get-variable-font-name($name);
+    font-weight: 100 900;
+    src: url($url) format($format);
+  }
+
+  @each $name, $weight in $fonts {
+    $url: _get-font-path($directory, $name, $ext);
 
     @font-face {
-        font-family: _get-variable-font-name($name);
-        font-weight: 100 900;
-        font-display: swap;
-        src: url(_get-font-path($directory, $vfont, $ext)) format($format);
+      font-display: swap;
+      font-family: $name;
+      font-weight: $weight;
+      src: url($url) format($format);
     }
-
-    @each $name, $weight in $fonts {
-        @font-face {
-            font-family: $name;
-            font-weight: $weight;
-            font-display: swap;
-            src: url(_get-font-path($directory, $name, $ext)) format($format);
-        }
-    }
+  }
 }
 
 @mixin font-family($name, $family) {
-    font-family: $name, $family;
+  font-family: $name, $family;
 
-    @supports(font-variation-settings: normal) {
-        font-family: _get-variable-font-name($name), $family;
-    }
+  @supports(font-variation-settings: normal) {
+    font-family: _get-variable-font-name($name), $family;
+  }
 }
 
 @mixin fonts {
-    @include _include-fonts(
-        "Raleway",
-        raleway.$vfont,
-        raleway.$fonts,
-        raleway.$ext
-    );
+  @include _include-fonts(
+    'Raleway',
+    raleway.$vfont,
+    raleway.$fonts,
+    raleway.$ext
+  );
 
-    // ...other fonts go here.
+  // ...other fonts go here.
 }

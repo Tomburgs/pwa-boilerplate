@@ -1,51 +1,52 @@
 @use 'styles/variables/button';
 
 .button {
-    @include button.default;
+  @include button.default;
     
-    margin: 1rem 0;
+  margin: 1rem 0;
 }
+
 .A2HS {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 1rem 2rem;
-    margin: 0 0 1rem;
-    border: var(--border);
-    border-radius: var(--border-radius);
-    background-color: var(--primary-block-color);
-    color: var(--primary-text-color);
+  background-color: var(--primary-block-color);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+  color: var(--primary-text-color);
+  display: block;
+  margin: 0 0 1rem;
+  padding: 1rem 2rem;
+  text-align: center;
+  width: 100%;
+
+  span,
+  svg {
+    --icon-size: 19px;
+  }
+
+  p,
+  figcaption {
+    font-size: 16px;
+    font-weight: 400;
     text-align: center;
+  }
 
-    span,
-    svg {
-        --icon-size: 19px;
+  p {
+    margin: 1rem 0;
+  }
+
+  figcaption {
+    font-weight: 500;
+  }
+
+  &Controls {
+    margin: 6px 0 0;
+    text-align: center;
+    width: 100%;
+
+    button {
+      color: var(--secondary-text-color);
+      font-size: 14px;
+      text-decoration: underline;
     }
-
-    p,
-    figcaption {
-        font-size: 16px;
-        font-weight: 400;
-        text-align: center;
-    }
-
-    p {
-        margin: 1rem 0;
-    }
-
-    figcaption {
-        font-weight: 500;
-    }
-
-    &Controls {
-        width: 100%;
-        margin: 6px 0 0;
-        text-align: center;
-
-        button {
-            font-size: 14px;
-            color: var(--secondary-text-color);
-            text-decoration: underline;
-        }
-    }
+  }
 }

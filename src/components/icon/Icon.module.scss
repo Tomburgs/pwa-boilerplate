@@ -1,13 +1,13 @@
 @use 'styles/variables/placeholder' as *;
 
 .icon {
-    display: inline-block;
-    height: var(--icon-size);
-    width: var(--icon-size);
+  display: inline-block;
+  height: var(--icon-size);
+  width: var(--icon-size);
 }
 
 .loader {
-    border-radius: 50%;
 
-    @include placeholder;
+  @include placeholder;
+  border-radius: 50%;
 }

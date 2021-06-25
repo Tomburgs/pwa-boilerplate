@@ -1,27 +1,27 @@
 @use 'styles/variables/media';
 
 .footer {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100vw;
-    box-sizing: border-box;
-    background-color: var(--primary-block-color);
-    font-size: 16px;
-    font-weight: 500;
-    padding:
-        var(--content-padding)
-        var(--content-padding)
-        calc(var(--header-items-height) + var(--content-padding));
+  background-color: var(--primary-block-color);
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+  font-weight: 500;
+  justify-content: center;
+  padding:
+    var(--content-padding)
+    var(--content-padding)
+    calc(var(--header-items-height) + var(--content-padding));
+  width: 100vw;
 
-    p {
-        margin: 0 10px;
-        display: inline-block;
-    }
+  p {
+    display: inline-block;
+    margin: 0 10px;
+  }
 
-    a {
-        font-size: 17px;
-        font-weight: 600;
-        color: var(--secondary-text-color);
-    }
+  a {
+    color: var(--secondary-text-color);
+    font-size: 17px;
+    font-weight: 600;
+  }
 }
