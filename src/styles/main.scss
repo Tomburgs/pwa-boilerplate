@@ -38,10 +38,10 @@ html {
   + var(--offline-notification-height)
   + var(--header-spacing)
   + env(safe-area-inset-top));
-  --header-spacing: 0;
+  --header-spacing: 0px;
   --header-navigation-height: 70px;
   --status-bar-highlight-color: #ef4444;
-  --offline-notification-height: 0;
+  --offline-notification-height: 0px;
 
   // Bottom header items shown on mobile
   --header-items-height: calc(60px + env(safe-area-inset-bottom));
@@ -55,7 +55,7 @@ html {
   --sidebar-width: 300px;
 
   @include media.after-mobile { --header-spacing: 10px; }
-  @include media.after-mobile { --header-items-height: 0; }
+  @include media.after-mobile { --header-items-height: 0px; }
   @include media.mobile { --footer-content-height: 40px; }
 
   &.dark-mode {

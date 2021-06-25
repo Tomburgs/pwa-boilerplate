@@ -8,6 +8,7 @@
     "selector-max-id": null,
     "scss/at-mixin-pattern": null,
     "scss/at-function-pattern": null,
-    "selector-class-pattern": null
+    "selector-class-pattern": null,
+    "length-zero-no-unit": null
   }
 }
