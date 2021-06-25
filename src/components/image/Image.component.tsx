@@ -3,8 +3,8 @@ import { injectClassNames } from 'utils/css';
 import styles from './Image.module.scss';
 
 const {
-    image,
-    placeholder
+  image,
+  placeholder
 } = styles;
 
 export const IMAGE_LOADING = 'IMAGE_LOADING';
@@ -23,59 +23,59 @@ type ImageProps = {
 };
 
 const useImageState = (
-    src: string,
-    ref: RefObject<HTMLImageElement>
+  src: string,
+  ref: RefObject<HTMLImageElement>
 ): [string, (imageState: string) => void] => {
-    const isLoaded = ref.current?.complete;
+  const isLoaded = ref.current?.complete;
 
-    const initialState = isLoaded ? IMAGE_LOADED : IMAGE_LOADING;
-    const [imageState, setImageState] = useState(initialState);
+  const initialState = isLoaded ? IMAGE_LOADED : IMAGE_LOADING;
+  const [imageState, setImageState] = useState(initialState);
 
-    useEffect(() => {
-        if (isLoaded) {
-            setImageState(IMAGE_LOADED);
-            return;
-        }
+  useEffect(() => {
+    if (isLoaded) {
+      setImageState(IMAGE_LOADED);
+      return;
+    }
 
-        if (!src) {
-            setImageState(IMAGE_NOT_SPECIFIED);
-            return;
-        }
+    if (!src) {
+      setImageState(IMAGE_NOT_SPECIFIED);
+      return;
+    }
 
-        setImageState(IMAGE_LOADING);
-    }, [isLoaded, src]);
+    setImageState(IMAGE_LOADING);
+  }, [isLoaded, src]);
 
-    return [imageState, setImageState];
+  return [imageState, setImageState];
 };
 
 export default function Image(props: ImageProps): JSX.Element {
-    const {
-        src = '',
-        alt = '',
-        height,
-        width,
-        loading = 'lazy',
-        className = '',
-        isPlaceholder = false
-    } = props;
-    const ref = useRef<HTMLImageElement>(null);
-    const [imageState, setImageState] = useImageState(src, ref);
+  const {
+    src = '',
+    alt = '',
+    height,
+    width,
+    loading = 'lazy',
+    className = '',
+    isPlaceholder = false
+  } = props;
+  const ref = useRef<HTMLImageElement>(null);
+  const [imageState, setImageState] = useImageState(src, ref);
 
-    const onLoad = useCallback(() => setImageState(IMAGE_LOADED), [setImageState]);
-    const onError = useCallback(() => setImageState(IMAGE_NOT_FOUND), [setImageState]);
+  const onLoad = useCallback(() => setImageState(IMAGE_LOADED), [setImageState]);
+  const onError = useCallback(() => setImageState(IMAGE_NOT_FOUND), [setImageState]);
 
-    const imageStyle = isPlaceholder
-        ? placeholder : styles[imageState];
+  const imageStyle = isPlaceholder
+    ? placeholder : styles[imageState];
 
-    return (
+  return (
         <div
           role="img"
           aria-label={ alt }
           className={
             injectClassNames(
-                image,
-                imageStyle,
-                [className, !!className]
+              image,
+              imageStyle,
+              [className, !!className]
             )
           }
         >
@@ -92,5 +92,5 @@ export default function Image(props: ImageProps): JSX.Element {
                 />
             ) }
         </div>
-    );
+  );
 }

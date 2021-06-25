@@ -1,11 +1,11 @@
 import {
-    Router as WorkboxRouter,
-    RegExpRoute
+  Router as WorkboxRouter,
+  RegExpRoute
 } from 'workbox-routing';
 import {
-    RouteHandler,
-    RouteHandlerObject,
-    cacheNames
+  RouteHandler,
+  RouteHandlerObject,
+  cacheNames
 } from 'workbox-core';
 import getRequestedPageFromURL from 'sw/utils/getRequestedPageFromURL';
 
@@ -25,93 +25,93 @@ export default class Router {
     private _workboxRouter: WorkboxRouter;
 
     constructor(cacheName: string) {
-        this._cacheName = cacheName;
-        this._workboxRouter = new WorkboxRouter();
-        this._init();
+      this._cacheName = cacheName;
+      this._workboxRouter = new WorkboxRouter();
+      this._init();
     }
 
     private get config(): Config {
-        return {
-            cacheName: this._cacheName
-        };
+      return {
+        cacheName: this._cacheName
+      };
     }
 
     private register(...args: [RegExp, RouteHandler]): void {
-        this._workboxRouter.registerRoute(
-            new RegExpRoute(...args)
-        );
+      this._workboxRouter.registerRoute(
+        new RegExpRoute(...args)
+      );
     }
 
     private _init(): void {
-        self.onfetch = this.handleFetch;
+      self.onfetch = this.handleFetch;
     }
 
     set ignoredRoutes(ignoredRoutes: RegExp) {
-        this._ignoredRoutes = ignoredRoutes;
+      this._ignoredRoutes = ignoredRoutes;
     }
 
     handleOfflineDocumentFetch = async (event: FetchEvent): Promise<Response> => {
-        const { request: { url } } = event;
+      const { request: { url } } = event;
 
-        /*
+      /*
          * Make sure that build manifest includes
          * the pathname we're requesting.
          */
-        const requestedPage = getRequestedPageFromURL(url);
+      const requestedPage = getRequestedPageFromURL(url);
 
-        if (!requestedPage) {
-            throw new Error('Requested page does not exist');
-        }
+      if (!requestedPage) {
+        throw new Error('Requested page does not exist');
+      }
 
-        const cache = await self.caches.open(cacheNames.precache);
-        const document = await cache.match(requestedPage, { ignoreSearch: true });
+      const cache = await self.caches.open(cacheNames.precache);
+      const document = await cache.match(requestedPage, { ignoreSearch: true });
 
-        if (!document) {
-            throw new Error('Missing document cache');
-        }
+      if (!document) {
+        throw new Error('Missing document cache');
+      }
 
-        return document;
+      return document;
     }
 
     handleFetch = async (event: FetchEvent): Promise<void> => {
-        const { request } = event;
-        const { url, destination } = request;
+      const { request } = event;
+      const { url, destination } = request;
 
-        if (this._ignoredRoutes && this._ignoredRoutes.test(url)) {
-            return;
-        }
+      if (this._ignoredRoutes && this._ignoredRoutes.test(url)) {
+        return;
+      }
 
-        if (!navigator.onLine && destination === 'document') {
-            event.respondWith(
-                this.handleOfflineDocumentFetch(event)
-            );
+      if (!navigator.onLine && destination === 'document') {
+        event.respondWith(
+          this.handleOfflineDocumentFetch(event)
+        );
 
-            return;
-        }
+        return;
+      }
 
-        const response = this._workboxRouter.handleRequest({ request, event });
+      const response = this._workboxRouter.handleRequest({ request, event });
 
-        if (!response) {
-            return;
-        }
+      if (!response) {
+        return;
+      }
 
-        event.respondWith(response);
+      event.respondWith(response);
     }
 
     setRoute(
-        route: RegExp,
-        Strategy: StrategyClass
+      route: RegExp,
+      Strategy: StrategyClass
     ): void {
-        this.register(
-            route,
-            new Strategy(this.config)
-        );
+      this.register(
+        route,
+        new Strategy(this.config)
+      );
     }
 
     setDefault(Strategy: StrategyClass): void {
-        this._workboxRouter
-            .setDefaultHandler(
-                new Strategy(this.config)
-            );
+      this._workboxRouter
+        .setDefaultHandler(
+          new Strategy(this.config)
+        );
     }
 }

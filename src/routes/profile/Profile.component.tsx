@@ -7,25 +7,25 @@ import { useUser } from 'hooks/user';
 import styles from './Profile.module.scss';
 
 const {
-    profile,
-    profileMain,
-    profilePicture,
-    profileContent,
-    followersIcon,
-    followersPlaceholder,
-    about
+  profile,
+  profileMain,
+  profilePicture,
+  profileContent,
+  followersIcon,
+  followersPlaceholder,
+  about
 } = styles;
 
 export default function Profile(): JSX.Element {
-    const {
-        name,
-        bio,
-        avatar_url,
-        followers
-    } = useUser();
+  const {
+    name,
+    bio,
+    avatar_url,
+    followers
+  } = useUser();
 
-    return (
-        <>
+  return (
+    <>
             <Head>
                 <title>Profile</title>
                 <meta name="robots" content="noindex" />
@@ -70,6 +70,6 @@ export default function Profile(): JSX.Element {
                     </p>
                 </div>
             </main>
-        </>
-    );
+    </>
+  );
 }

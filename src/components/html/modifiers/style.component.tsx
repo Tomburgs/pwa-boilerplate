@@ -3,13 +3,13 @@ import { Element } from 'domhandler/lib/node';
 import Head from 'next/head';
 
 export default function Style(domNode: Element): JSX.Element | null {
-    const { children } = domNode;
+  const { children } = domNode;
 
-    return (
+  return (
         <Head>
             <style>
                 { children }
             </style>
         </Head>
-    );
+  );
 }

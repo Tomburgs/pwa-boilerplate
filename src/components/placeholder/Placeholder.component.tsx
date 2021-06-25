@@ -10,24 +10,24 @@ type PlaceholderProps = {
 };
 
 export default function Placeholder(
-    props: PlaceholderProps
+  props: PlaceholderProps
 ): JSX.Element {
-    const { content = '', length } = props;
+  const { content = '', length } = props;
 
-    if (content) {
-        return <>{ content }</>;
-    }
+  if (content) {
+    return <>{ content }</>;
+  }
 
-    return (
+  return (
         <span
           className={
             injectClassNames(
-                placeholder,
-                styles[length]
+              placeholder,
+              styles[length]
             )
           }
         >
             { content }
         </span>
-    );
+  );
 }

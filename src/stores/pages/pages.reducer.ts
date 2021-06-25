@@ -6,39 +6,39 @@ interface PagesState {
 }
 
 const initialState = {
-    schema: {},
-    pages: {}
+  schema: {},
+  pages: {}
 };
 
 export default (
-    state: PagesState = initialState,
-    action: PagesActions
+  state: PagesState = initialState,
+  action: PagesActions
 ): PagesState => {
-    switch (action.type) {
-    case UPDATE_SCHEMA: {
-        const { schema } = action;
+  switch (action.type) {
+  case UPDATE_SCHEMA: {
+    const { schema } = action;
 
-        return {
-            ...state,
-            schema
-        };
-    }
+    return {
+      ...state,
+      schema
+    };
+  }
 
-    case UPDATE_PAGES: {
-        const { pages } = state;
-        const { page } = action;
-        const { id } = page;
+  case UPDATE_PAGES: {
+    const { pages } = state;
+    const { page } = action;
+    const { id } = page;
 
-        return {
-            ...state,
-            pages: {
-                ...pages,
-                [id]: page
-            }
-        };
-    }
+    return {
+      ...state,
+      pages: {
+        ...pages,
+        [id]: page
+      }
+    };
+  }
 
-    default:
-        return state;
-    }
+  default:
+    return state;
+  }
 };

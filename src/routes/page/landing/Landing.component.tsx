@@ -3,15 +3,15 @@ import Image from 'components/image';
 import styles from './Landing.module.scss';
 
 const {
-    wrapper,
-    landing,
-    landingText,
-    landingImage,
-    landingNavigationWrapper
+  wrapper,
+  landing,
+  landingText,
+  landingImage,
+  landingNavigationWrapper
 } = styles;
 
 export default function Landing(): JSX.Element {
-    return (
+  return (
         <div className={ wrapper }>
             <div className={ landing }>
                 <div className={ landingText }>
@@ -41,5 +41,5 @@ export default function Landing(): JSX.Element {
                 />
             </div>
         </div>
-    );
+  );
 }

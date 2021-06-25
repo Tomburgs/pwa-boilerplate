@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import {
-    Notification as INotification,
-    NotificationId,
-    hideNotification
+  Notification as INotification,
+  NotificationId,
+  hideNotification
 } from 'stores/notifications';
 import { injectClassNames } from 'utils/css';
 import { ANIMATION_DURATION, NOTIFICATION_TTL } from 'components/notificationList';
@@ -15,73 +15,73 @@ type NotificationProps = {
 };
 
 const {
-    notification,
-    notificationOpen,
-    notificationClose
+  notification,
+  notificationOpen,
+  notificationClose
 } = styles;
 
 const useHideNotification = (
-    notificationId: NotificationId,
-    setIsClosing: (isClosing: boolean) => void
+  notificationId: NotificationId,
+  setIsClosing: (isClosing: boolean) => void
 ): () => void => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    return () => {
-        setIsClosing(true);
+  return () => {
+    setIsClosing(true);
 
-        setTimeout(() => {
-            dispatch(hideNotification(notificationId));
-        }, ANIMATION_DURATION);
-    };
+    setTimeout(() => {
+      dispatch(hideNotification(notificationId));
+    }, ANIMATION_DURATION);
+  };
 };
 
 const useIsClosing = (
-    notificationId: NotificationId,
-    isExpirable: boolean
+  notificationId: NotificationId,
+  isExpirable: boolean
 ): [
     boolean,
     () => void
 ] => {
-    const [isClosing, setIsClosing] = useState(false);
-    const hideNotification = useCallback(
-        useHideNotification(notificationId, setIsClosing),
-        [notificationId]
+  const [isClosing, setIsClosing] = useState(false);
+  const hideNotification = useCallback(
+    useHideNotification(notificationId, setIsClosing),
+    [notificationId]
+  );
+
+  useEffect(() => {
+    const timeout = (
+      isExpirable && setTimeout(
+        hideNotification,
+        NOTIFICATION_TTL
+      )
     );
 
-    useEffect(() => {
-        const timeout = (
-            isExpirable && setTimeout(
-                hideNotification,
-                NOTIFICATION_TTL
-            )
-        );
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    };
+  }, []);
 
-        return () => {
-            if (timeout) {
-                clearTimeout(timeout);
-            }
-        };
-    }, []);
-
-    return [isClosing, hideNotification];
+  return [isClosing, hideNotification];
 };
 
 export default function Notification({
-    notificationId,
-    notification: { message, isExpirable }
+  notificationId,
+  notification: { message, isExpirable }
 }: NotificationProps): JSX.Element {
-    const [isClosing, hideNotification] = useIsClosing(notificationId, isExpirable);
+  const [isClosing, hideNotification] = useIsClosing(notificationId, isExpirable);
 
-    const notificationState = isClosing
-        ? notificationClose
-        : notificationOpen;
+  const notificationState = isClosing
+    ? notificationClose
+    : notificationOpen;
 
-    return (
+  return (
         <li
           className={
               injectClassNames(
-                  notification,
-                  notificationState
+                notification,
+                notificationState
               )
           }
         >
@@ -94,5 +94,5 @@ export default function Notification({
                 { message }
             </p>
         </li>
-    );
+  );
 }

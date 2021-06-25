@@ -5,8 +5,8 @@
  * changing these values will not change any css.
  */
 export const theme = {
-    light: '#fff',
-    dark: '#2c2c2c'
+  light: '#fff',
+  dark: '#2c2c2c'
 };
 
 /*

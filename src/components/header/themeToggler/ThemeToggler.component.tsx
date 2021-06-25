@@ -6,23 +6,23 @@ import { theme } from 'config';
 import styles from './ThemeToggler.module.scss';
 
 const {
-    themeToggler,
-    themeTogglerIcon,
-    statusBarHighlight 
+  themeToggler,
+  themeTogglerIcon,
+  statusBarHighlight 
 } = styles;
 
 export default function ThemeToggler(): JSX.Element {
-    const [isDarkModeEnabled, setIsDarkModeEnabled] = useTheme();
-    const themeColor = isDarkModeEnabled ? theme.dark : theme.light;
+  const [isDarkModeEnabled, setIsDarkModeEnabled] = useTheme();
+  const themeColor = isDarkModeEnabled ? theme.dark : theme.light;
 
-    const toggleTheme = useCallback(
-        () => setIsDarkModeEnabled(!isDarkModeEnabled),
-        [isDarkModeEnabled]
-    );
+  const toggleTheme = useCallback(
+    () => setIsDarkModeEnabled(!isDarkModeEnabled),
+    [isDarkModeEnabled]
+  );
 
-    return useMemo(
-        () => (
-            <>
+  return useMemo(
+    () => (
+      <>
                 <Head>
                     <meta name="theme-color" content={ themeColor } />
                 </Head>
@@ -45,7 +45,7 @@ export default function ThemeToggler(): JSX.Element {
                     <Icon asset="Moon" className={ themeTogglerIcon } />
                     <Icon asset="Sun" className={ themeTogglerIcon } />
                 </button>
-            </>
-        ), [isDarkModeEnabled, setIsDarkModeEnabled]
-    );
+      </>
+    ), [isDarkModeEnabled, setIsDarkModeEnabled]
+  );
 }

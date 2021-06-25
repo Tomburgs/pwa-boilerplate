@@ -1,9 +1,9 @@
 import {
-    createStore,
-    compose,
-    combineReducers,
-    applyMiddleware,
-    Action
+  createStore,
+  compose,
+  combineReducers,
+  applyMiddleware,
+  Action
 } from 'redux';
 import thunk, { ThunkAction } from 'redux-thunk';
 import { getWindowProperty } from 'utils/browser';
@@ -12,9 +12,9 @@ import { notifications } from 'stores/notifications';
 import { pages } from 'stores/pages';
 
 const reducers = combineReducers({
-    user,
-    notifications,
-    pages
+  user,
+  notifications,
+  pages
 });
 
 export type RootState = ReturnType<typeof reducers>
@@ -30,10 +30,10 @@ const isDevMode = process.env.NODE_ENV === 'development';
 const devtools = isDevMode && (getWindowProperty() as any).__REDUX_DEVTOOLS_EXTENSION__;
 
 if (devtools) {
-    middleware.push(devtools());
+  middleware.push(devtools());
 }
 
 export default createStore(
-    reducers,
-    compose(...middleware)
+  reducers,
+  compose(...middleware)
 );

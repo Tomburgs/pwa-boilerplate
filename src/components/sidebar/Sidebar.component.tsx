@@ -6,24 +6,24 @@ import Placeholder from 'components/placeholder';
 import styles from './Sidebar.module.scss';
 
 const {
-    sidebar,
-    sidebarProfile,
-    sidebarProfileImage,
-    sidebarProfileName,
-    sidebarProfileBio,
-    sidebarPages,
-    sidebarPagesList,
-    sidebarPagesActive
+  sidebar,
+  sidebarProfile,
+  sidebarProfileImage,
+  sidebarProfileName,
+  sidebarProfileBio,
+  sidebarPages,
+  sidebarPagesList,
+  sidebarPagesActive
 } = styles;
 
 export default function Sidebar(): JSX.Element {
-    const {
-        name,
-        avatar_url,
-        bio
-    } = useUser();
+  const {
+    name,
+    avatar_url,
+    bio
+  } = useUser();
 
-    return (
+  return (
         <aside className={ sidebar }>
             <div className={ sidebarProfile }>
                 <Image
@@ -51,5 +51,5 @@ export default function Sidebar(): JSX.Element {
                 </Pages>
             </div>
         </aside>
-    );
+  );
 }

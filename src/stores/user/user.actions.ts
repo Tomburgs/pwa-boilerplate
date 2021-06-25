@@ -15,6 +15,6 @@ export interface UpdateUserAction {
 export type UserActions = UpdateUserAction;
 
 export const updateUser = (user: User): UpdateUserAction => ({
-    type: UPDATE_USER,
-    user
+  type: UPDATE_USER,
+  user
 });
