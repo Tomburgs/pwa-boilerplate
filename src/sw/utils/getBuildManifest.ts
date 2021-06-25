@@ -1,7 +1,7 @@
 declare const self: ServiceWorkerGlobalScope;
 
 const getBuildManifest = (): NextBuildManifest => {
-    const manifest = self.__BUILD_MANIFEST;
+    const { __rewrites, sortedPages, ...manifest } = self.__BUILD_MANIFEST;
 
     return Object.entries(manifest).reduce<NextBuildManifest>(
         (manifest, [page, assets]) => ({

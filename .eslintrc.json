@@ -20,6 +20,7 @@
             "version": "detect"
         }
     },
+    "ignorePatterns": ["next.config.js"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "project": "./tsconfig.json",

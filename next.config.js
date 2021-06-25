@@ -14,6 +14,7 @@ const serviceWorkerUrl = `/_next/${serviceWorkerPath}`;
 const serviceWorkerDest = `.next/${serviceWorkerPath}`;
 
 module.exports = {
+    webpack5: true,
     reactStrictMode: true,
     env: {
         serviceWorkerUrl
