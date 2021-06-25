@@ -1,6 +1,6 @@
 <p align="center">
     <img
-      width="600px"
+      width="512px"
       alt="PWA Boilerplate"
       src="https://github.com/Tomburgs/pwa-boilerplate/raw/master/docs/pwa-boilerplate.png"
     />
