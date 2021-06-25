@@ -5,13 +5,13 @@ import Placeholder from 'components/placeholder';
 import styles from './PageList.module.scss';
 
 const {
-    pageList,
-    pageListContainer
+  pageList,
+  pageListContainer
 } = styles;
 
 export default function PageList(): JSX.Element {
-    return (
-        <>
+  return (
+    <>
             <Head>
                 <title>Page List</title>
             </Head>
@@ -30,6 +30,6 @@ export default function PageList(): JSX.Element {
                     <li><Placeholder length="medium" /></li>
                 </Pages>
             </main>
-        </>
-    );
+    </>
+  );
 }

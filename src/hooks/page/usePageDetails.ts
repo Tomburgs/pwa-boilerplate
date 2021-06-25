@@ -4,13 +4,13 @@ import { useSelector } from 'react-redux';
 import { usePageId } from 'hooks/page';
 
 const usePageDetails = (): PageDetails => {
-    const pageId = usePageId();
-    const {
-        pages: { [pageId]: pageDetailsContent },
-        schema: { [pageId]: pageDetailsSchema }
-    } = useSelector((state: RootState) => state.pages);
+  const pageId = usePageId();
+  const {
+    pages: { [pageId]: pageDetailsContent },
+    schema: { [pageId]: pageDetailsSchema }
+  } = useSelector((state: RootState) => state.pages);
 
-    return pageDetailsContent || pageDetailsSchema || {};
+  return pageDetailsContent || pageDetailsSchema || {};
 };
 
 export default usePageDetails;

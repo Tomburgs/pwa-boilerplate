@@ -43,10 +43,10 @@ importScripts(`/_next/static/${self.__BUILD_ID}/_buildManifest.js`);
  * to be consistent with names.
  */
 setCacheNameDetails({
-    prefix: 'app',
-    suffix: 'v1',
-    runtime: 'cache-runtime',
-    precache: 'cache-precache'
+  prefix: 'app',
+  suffix: 'v1',
+  runtime: 'cache-runtime',
+  precache: 'cache-precache'
 });
 
 const { runtime: CACHE_NAME_RUNTIME } = cacheNames;
@@ -62,8 +62,8 @@ const revision = `${Date.now()}`;
  * Routes that we need to cache.
  */
 const documentURLsToCache = buildManifestPages.map(url => ({
-    url,
-    revision
+  url,
+  revision
 }));
 
 /*
@@ -72,14 +72,14 @@ const documentURLsToCache = buildManifestPages.map(url => ({
  * No need to add revision as their URLs include version.
  */
 const documentFilesToCache = buildManifestPages.reduce<string[]>(
-    (pages, name) => [
-        ...pages,
-        ...manifest[name]
-    ],
-    []
+  (pages, name) => [
+    ...pages,
+    ...manifest[name]
+  ],
+  []
 ).map(url => ({
-    url,
-    revision: null
+  url,
+  revision: null
 }));
 
 /*
@@ -89,22 +89,22 @@ const documentFilesToCache = buildManifestPages.reduce<string[]>(
  * workbox-webpack-plugin.
  */
 precacheAndRoute([
-    ...self.__WB_MANIFEST || [],
-    ...documentURLsToCache,
-    ...documentFilesToCache
+  ...self.__WB_MANIFEST || [],
+  ...documentURLsToCache,
+  ...documentFilesToCache
 ]);
 
 /*
  * On re-deploy delete all cached runtime requests.
  */
 self.addEventListener('activate', (event: ExtendableEvent) => {
-    event.waitUntil(
-        deleteEntriesForCache(CACHE_NAME_RUNTIME)
-    );
+  event.waitUntil(
+    deleteEntriesForCache(CACHE_NAME_RUNTIME)
+  );
 });
 
 self.addEventListener('install', () => {
-    self.skipWaiting();
+  self.skipWaiting();
 });
 
 /*

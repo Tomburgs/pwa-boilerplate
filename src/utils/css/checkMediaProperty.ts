@@ -1,13 +1,13 @@
 import { getWindowProperty } from 'utils/browser';
 
 const checkMediaProperty = (mediaQueryString: string): boolean => {
-    const { matchMedia } = getWindowProperty();
+  const { matchMedia } = getWindowProperty();
 
-    return (
-        matchMedia
+  return (
+    matchMedia
         && matchMedia(`(${mediaQueryString})`).matches
         || false
-    );
+  );
 };
 
 export default checkMediaProperty;

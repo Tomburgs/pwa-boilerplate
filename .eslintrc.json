@@ -111,7 +111,7 @@
         "semi": ["error", "always"],
         "indent": [
             "warn",
-            4,
+            2,
             {
                 "ignoredNodes": [
                     "JSXElement", "JSXElement > *", "JSXAttribute",

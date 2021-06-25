@@ -11,17 +11,17 @@ import { AppProps } from 'next/app';
 import 'styles/main.scss';
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
-    useEffect(() => {
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register(
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register(
                 process.env.serviceWorkerUrl as string,
                 { scope: '/' }
-            );
-        }
-    }, []);
+      );
+    }
+  }, []);
 
-    return (
-        <>
+  return (
+    <>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=0, viewport-fit=cover" />
                 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,6 +40,6 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
                     <Footer />
                 </ThemeProvider>
             </Provider>
-        </>
-    );
+    </>
+  );
 }

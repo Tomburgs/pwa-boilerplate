@@ -4,16 +4,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'stores';
 
 const useUser = (): User => {
-    const dispatch = useDispatch();
-    const user = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.user);
 
-    useEffect(() => {
-        if (!user.name) {
-            dispatch(getUser('tomburgs'));
-        }
-    }, []);
+  useEffect(() => {
+    if (!user.name) {
+      dispatch(getUser('tomburgs'));
+    }
+  }, []);
 
-    return user;
+  return user;
 };
 
 export default useUser;

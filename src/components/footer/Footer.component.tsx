@@ -2,11 +2,11 @@ import React from 'react';
 import styles from './Footer.module.scss';
 
 const {
-    footer
+  footer
 } = styles;
 
 export default function Footer(): JSX.Element {
-    return (
+  return (
         <footer className={ footer }>
             <p>© PWA Boilerplate</p>
             <p>
@@ -19,5 +19,5 @@ export default function Footer(): JSX.Element {
                 </a>
             </p>
         </footer>
-    );
+  );
 }

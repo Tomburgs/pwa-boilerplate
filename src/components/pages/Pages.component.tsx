@@ -21,63 +21,63 @@ type PageItemList = PageProps & {
 }
 
 export const PageItem = (props: PageItemProps): JSX.Element => {
-    const {
-        url,
-        name,
-        page,
-        activeClass = ''
-    } = props;
-    const isActive = url === page;
-    const className = injectClassNames([activeClass, isActive]);
+  const {
+    url,
+    name,
+    page,
+    activeClass = ''
+  } = props;
+  const isActive = url === page;
+  const className = injectClassNames([activeClass, isActive]);
 
-    return (
+  return (
         <li className={ className }>
             <Link href={ `/${url}` }>
                 { name }
             </Link>
         </li>
-    );
+  );
 };
 
 export const PageItemList = (props: PageItemList): JSX.Element => {
-    const { schema } = props;
-    const page = usePageId();
+  const { schema } = props;
+  const page = usePageId();
 
-    return (
-        <>
+  return (
+    <>
             { Object.entries(schema).map(
-                ([url, { title: name }]) => (
+              ([url, { title: name }]) => (
                     <PageItem
                       key={ url }
                       { ...{
-                          url, name, page,
-                          ...props
+                        url, name, page,
+                        ...props
                       } }
                     />
-                )
+              )
             ) }
-        </>
-    );
+    </>
+  );
 };
 
 export default memo(
-    function Pages(props: PageProps): JSX.Element {
-        const { className, children } = props;
-        const { home, ...schema } = useSchema();
-        const isSchemaLoaded = !!Object.keys(schema).length;
+  function Pages(props: PageProps): JSX.Element {
+    const { className, children } = props;
+    const { home, ...schema } = useSchema();
+    const isSchemaLoaded = !!Object.keys(schema).length;
 
-        return (
+    return (
             <ul className={ className }>
                 { !isSchemaLoaded
-                    ? children
-                    : (
+                  ? children
+                  : (
                         <PageItemList
                           schema={ schema }
                           { ...props }
                         />
-                    )
+                  )
                 }
             </ul>
-        );
-    }
+    );
+  }
 );

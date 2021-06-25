@@ -34,11 +34,11 @@ export interface UpdatePages {
 export type PagesActions = UpdateSchema | UpdatePages;
 
 export const updateSchema = (schema: Schema): UpdateSchema => ({
-    type: UPDATE_SCHEMA,
-    schema
+  type: UPDATE_SCHEMA,
+  schema
 });
 
 export const updatePages = (page: Page): UpdatePages => ({
-    type: UPDATE_PAGES,
-    page
+  type: UPDATE_PAGES,
+  page
 });

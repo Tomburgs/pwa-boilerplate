@@ -14,26 +14,26 @@ const Loader = ({ className = '' }: IconProps): JSX.Element => (
     <span
       className={
           injectClassNames(
-              icon,
-              loader,
-              className
+            icon,
+            loader,
+            className
           )
       }
     />
 );
 
 export default function Icon(props: IconProps): JSX.Element {
-    const {
-        asset,
-        className: argClassName = ''
-    } = props;
-    const className = injectClassNames(icon, argClassName);
+  const {
+    asset,
+    className: argClassName = ''
+  } = props;
+  const className = injectClassNames(icon, argClassName);
 
-    return createElement(
-        dynamic<IconProps>(
-            () => import(`assets/${asset}.svg`),
-            { loading: () => <Loader { ...props } /> }
-        ),
-        { ...props, className }
-    );
+  return createElement(
+    dynamic<IconProps>(
+      () => import(`assets/${asset}.svg`),
+      { loading: () => <Loader { ...props } /> }
+    ),
+    { ...props, className }
+  );
 }

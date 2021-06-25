@@ -5,28 +5,28 @@ import { injectClassNames } from 'utils/css';
 import styles from './Items.module.scss';
 
 const {
-    items,
-    active
+  items,
+  active
 } = styles;
 
 const links = [
-    { name: 'Home', url: '/', alias: [] },
-    { name: 'Pages', url: '/pages', alias: ['/[page]'] },
-    { name: 'Profile', url: '/profile', alias: [] }
+  { name: 'Home', url: '/', alias: [] },
+  { name: 'Pages', url: '/pages', alias: ['/[page]'] },
+  { name: 'Profile', url: '/profile', alias: [] }
 ];
 
 export default function Items(): JSX.Element {
-    const { pathname } = useRouter();
+  const { pathname } = useRouter();
 
-    return (
+  return (
         <ul className={ items }>
             { links.map(({ name, url, alias }) => (
                 <li
                   key={ name }
                   className={
                     injectClassNames([
-                        active,
-                        pathname === url
+                      active,
+                      pathname === url
                         || alias.includes(pathname)
                     ])
                   }
@@ -35,5 +35,5 @@ export default function Items(): JSX.Element {
                 </li>
             )) }
         </ul>
-    );
+  );
 }

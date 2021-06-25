@@ -1,9 +1,9 @@
 import React, {
-    createContext,
-    useState,
-    useEffect,
-    ReactNode,
-    useMemo
+  createContext,
+  useState,
+  useEffect,
+  ReactNode,
+  useMemo
 } from 'react';
 import { browserStorage } from 'utils/browser';
 import { checkMediaProperty } from 'utils/css';
@@ -23,44 +23,44 @@ export type ThemeValue = [
 export const ThemeContext = createContext<ThemeValue | []>([]);
 
 const useThemeChange = (theme: ThemeValue): void => {
-    const [isDarkModeEnabled] = theme;
+  const [isDarkModeEnabled] = theme;
 
-    useEffect(() => {
-        const { documentElement: { classList } } = document;
+  useEffect(() => {
+    const { documentElement: { classList } } = document;
 
-        browserStorage.setItem(
-            DARK_MODE,
-            isDarkModeEnabled
-        );
+    browserStorage.setItem(
+      DARK_MODE,
+      isDarkModeEnabled
+    );
 
-        if (isDarkModeEnabled) {
-            classList.add(DARK_MODE);
+    if (isDarkModeEnabled) {
+      classList.add(DARK_MODE);
 
-            return;
-        }
+      return;
+    }
 
-        classList.remove(DARK_MODE);
-    }, [isDarkModeEnabled]);
+    classList.remove(DARK_MODE);
+  }, [isDarkModeEnabled]);
 };
 
 export function ThemeProvider(
-    { children }: ThemeProviderProps
+  { children }: ThemeProviderProps
 ): JSX.Element {
-    const isDarkMode = useMemo(() => {
-        const userPreference = browserStorage.getItem(DARK_MODE);
-        const isUserPreferenceSet = userPreference !== null;
-        const isSystemDarkMode = checkMediaProperty(PREFERS_COLOR_SCHEME);
+  const isDarkMode = useMemo(() => {
+    const userPreference = browserStorage.getItem(DARK_MODE);
+    const isUserPreferenceSet = userPreference !== null;
+    const isSystemDarkMode = checkMediaProperty(PREFERS_COLOR_SCHEME);
 
-        return isUserPreferenceSet ? userPreference : isSystemDarkMode;
-    }, []);
+    return isUserPreferenceSet ? userPreference : isSystemDarkMode;
+  }, []);
 
-    const theme = useState(isDarkMode);
+  const theme = useState(isDarkMode);
 
-    useThemeChange(theme);
+  useThemeChange(theme);
 
-    return (
+  return (
         <ThemeContext.Provider value={ theme }>
             { children }
         </ThemeContext.Provider>
-    );
+  );
 }

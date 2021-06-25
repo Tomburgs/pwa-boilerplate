@@ -21,11 +21,11 @@ export interface HideNotificationAction {
 export type NotificationsActions = ShowNotificationAction | HideNotificationAction;
 
 export const showNotification = (notification: Notification): ShowNotificationAction => ({
-    type: SHOW_NOTIFICATION,
-    notification
+  type: SHOW_NOTIFICATION,
+  notification
 });
 
 export const hideNotification = (notificationId: NotificationId): HideNotificationAction => ({
-    type: HIDE_NOTIFICATION,
-    notificationId
+  type: HIDE_NOTIFICATION,
+  notificationId
 });
