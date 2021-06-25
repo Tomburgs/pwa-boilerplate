@@ -1,24 +1,24 @@
 @mixin _base {
-    display: inline-block;
-    cursor: pointer;
-    color: var(--primary-text-color);
-    font-weight: var(--button-font-weight);
-    font-size: var(--button-font-size);
-    padding: var(--button-padding);
-    border-radius: var(--button-radius);
-    border: 1px solid var(--button-background);
-    width: auto;
+  border: 1px solid var(--button-background);
+  border-radius: var(--button-radius);
+  color: var(--primary-text-color);
+  cursor: pointer;
+  display: inline-block;
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  padding: var(--button-padding);
+  width: auto;
 
-    &:hover {
-        border: 1px solid var(--button-hover);
-    }
+  &:hover {
+    border: 1px solid var(--button-hover);
+  }
 }
 
 @mixin default {
-    @include _base;
-    background-color: var(--button-background);
+  @include _base;
+  background-color: var(--button-background);
 
-    &:hover {
-        background-color: var(--button-hover);
-    }
+  &:hover {
+    background-color: var(--button-hover);
+  }
 }

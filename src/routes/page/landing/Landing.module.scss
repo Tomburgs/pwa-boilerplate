@@ -3,78 +3,79 @@
 @use 'styles/variables/theme';
 
 .wrapper {
-    padding: var(--header-height) 0 0;
-    background-color: #E3879E;
+  background-color: #e3879e;
+  padding: var(--header-height) 0 0;
 
-    @include theme.dark-mode {
-        background-color: #2e3191;
-    }
+  @include theme.dark-mode {
+    background-color: #2e3191;
+  }
 }
 
 .landing {
-    --primary-text-color: #f2f2f7;
-    --secondary-text-color: #f3f3f7;
+  --primary-text-color: #f2f2f7;
+  --secondary-text-color: #f3f3f7;
 
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto 1fr;
-    grid-column-gap: 20px;
-    padding: var(--content-padding);
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  margin: 0 auto;
+  max-width: var(--content-max-width);
+  padding: var(--content-padding);
+
+  @include media.mobile {
+    grid-template-columns: auto;
+  }
+
+  &Text {
     margin: 0 auto;
-    max-width: var(--content-max-width);
+    max-width: 650px;
+    text-align: center;
+
+    h1,
+    p {
+      color: var(--primary-text-color);
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+
+  &NavigationWrapper {
+    display: block;
+    margin: 1rem auto 0;
+    text-align: center;
 
     @include media.mobile {
-        grid-template-columns: auto;
+      grid-row: 3;
     }
 
-    &Text {
-        text-align: center;
-        max-width: 650px;
-        margin: 0 auto;
+    a {
+      --button-font-weight: 600;
+      --button-background: #000;
+      --button-hover: #000;
 
-        h1, p {
-            color: var(--primary-text-color);
-            font-weight: 600;
-        }
-
-        p {
-            font-size: 20px;
-            font-weight: 500;
-        }
+      @include button.default;
     }
 
-    &NavigationWrapper {
-        display: block;
-        margin: 1rem auto 0;
-        text-align: center;
-
-        @include media.mobile {
-            grid-row: 3;
-        }
-
-        a {
-            --button-font-weight: 600;
-            --button-background: #000;
-            --button-hover: #000;
-
-            @include button.default;
-        }
-
-        p {
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--secondary-text-color);
-        }
+    p {
+      color: var(--secondary-text-color);
+      font-size: 16px;
+      font-weight: 500;
     }
+  }
 
-    &Image {
-        display: block;
-        margin: 0 auto;
-        width: fit-content;
+  &Image {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
 
-        @include media.after-mobile {
-            grid-column: 2;
-            grid-row: 1 / span 2;
-        }
+    @include media.after-mobile {
+      grid-column: 2;
+      grid-row: 1 / span 2;
     }
+  }
 }

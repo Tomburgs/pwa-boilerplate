@@ -1,0 +1,13 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "ignoreFiles": ["!**/*.scss"],
+  "rules": {
+    "indentation": [2],
+    "max-nesting-depth": 3,
+    "selector-no-qualifying-type": null,
+    "selector-max-id": null,
+    "scss/at-mixin-pattern": null,
+    "scss/at-function-pattern": null,
+    "selector-class-pattern": null
+  }
+}

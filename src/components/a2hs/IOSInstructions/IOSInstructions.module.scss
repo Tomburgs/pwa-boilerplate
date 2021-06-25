@@ -1,14 +1,14 @@
 .icon {
-    &Box,
-    &Plus {
-        vertical-align: top;
-    }
+  &Box,
+  &Plus {
+    vertical-align: top;
+  }
 
-    &Box {
-        fill: #0d6efd;
-    }
+  &Box {
+    fill: #0d6efd;
+  }
 
-    &Plus {
-        fill: var(--primary-text-color);
-    }
+  &Plus {
+    fill: var(--primary-text-color);
+  }
 }

@@ -2,54 +2,55 @@
 @use 'styles/variables/media';
 
 .page {
+  > section {
+    display: grid;
+    grid-column-gap: 2rem;
+    grid-template-columns: 1fr minmax(var(--sidebar-width), 0);
+
+    @include media.mobile {
+      grid-template-columns: auto;
+    }
+  }
+
+  &Landing {
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+
     > section {
-        display: grid;
-        grid-template-columns: 1fr minmax(var(--sidebar-width), 0);
-        grid-column-gap: 2rem;
+      margin: 0 auto;
+      max-width: var(--content-max-width);
+      padding: var(--content-padding);
+    }
+  }
 
-        @include media.mobile {
-            grid-template-columns: auto;
-        }
+  &Content {
+    line-height: 1.4;
+
+    > h1,
+    h2 {
+      font-size: 36px;
+      font-weight: 500;
     }
 
-    &Landing {
-        max-width: 100%;
-        padding: 0;
-        margin: 0;
-
-        > section {
-            padding: var(--content-padding);
-            margin: 0 auto;
-            max-width: var(--content-max-width);
-        }
+    > p {
+      font-size: 18px;
+      margin: 0;
+      white-space: pre-line;
     }
-
-    &Content {
-        line-height: 1.4;
-
-        > h1, h2 {
-            font-weight: 500;
-            font-size: 36px;
-        }
-
-        > p {
-            white-space: pre-line;
-            font-size: 18px;
-            margin: 0;
-        }
-    }
+  }
 }
 
 .placeholder {
-    @include animations.placeholder;
-    margin: 0 0 15px;
-    padding-bottom: 20%;
+  @include animations.placeholder;
+  margin: 0 0 15px;
+  padding-bottom: 20%;
 
-    &:nth-child(n + 2) {
-        padding-bottom: 40%;
-    }
+  &:nth-child(n + 2) {
+    padding-bottom: 40%;
+  }
 
-    &:nth-child(n + 3) {
-        padding-bottom: 30%;
-    }
+  &:nth-child(n + 3) {
+    padding-bottom: 30%;
+  }
 }

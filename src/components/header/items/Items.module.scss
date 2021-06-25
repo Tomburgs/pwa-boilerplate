@@ -2,56 +2,56 @@
 @use 'styles/variables/theme';
 
 .items {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-flow: row;
-    list-style: none;
-    padding: 0;
+  align-items: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+  list-style: none;
+  padding: 0;
 
-    @include media.mobile {
-        position: fixed;
-        justify-content: space-evenly;
-        bottom: 0;
-        left: 0;
-        height: var(--header-items-height);
-        width: 100vw;
-        box-sizing: border-box;
-        padding: 1rem 1rem max(env(safe-area-inset-bottom), 1rem);
-        background-color: var(--primary-block-color);
-        box-shadow: var(--shadow);
+  @include media.mobile {
+    background-color: var(--primary-block-color);
+    bottom: 0;
+    box-shadow: var(--shadow);
+    box-sizing: border-box;
+    height: var(--header-items-height);
+    justify-content: space-evenly;
+    left: 0;
+    padding: 1rem 1rem max(env(safe-area-inset-bottom), 1rem);
+    position: fixed;
+    width: 100vw;
+  }
+
+  a {
+    color: var(--primary-text-color);
+    font-weight: 500;
+  }
+
+  > li {
+    border-radius: 20px;
+    font-size: 18px;
+    margin: 0 5px;
+    padding: 10px 20px;
+    transition: background-color 200ms;
+
+    &:last-child {
+      @include media.after-mobile {
+        margin: 0 0 0 5px;
+      }
     }
-
-    a {
-        color: var(--primary-text-color);
-        font-weight: 500;
-    }
-
-    > li {
-        font-size: 18px;
-        border-radius: 20px;
-        padding: 10px 20px;
-        margin: 0 5px;
-        transition: background-color 200ms;
-
-        &:last-child {
-            @include media.after-mobile {
-                margin: 0 0 0 5px;
-            }
-        }
-    }
+  }
 }
 
 .active {
-    --background-color: rgba(0, 0, 0, .05);
+  --background-color: rgba(0, 0, 0, 0.05);
 
-    @include theme.dark-mode {
-        --background-color: rgba(255, 255, 255, .05);
-    }
+  background-color: var(--background-color);
 
-    background-color: var(--background-color);
+  @include theme.dark-mode {
+    --background-color: rgba(255, 255, 255, 0.05);
+  }
 
-    > a {
-        color: var(--highlight-color);
-    }
+  > a {
+    color: var(--highlight-color);
+  }
 }

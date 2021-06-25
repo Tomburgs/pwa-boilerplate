@@ -38,13 +38,16 @@
     "eslint-plugin-import": "^2.23.2",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-sass-guidelines": "^8.0.0"
   },
   "scripts": {
     "dev": "NODE_ENV=development next",
     "start": "NODE_ENV=production next start",
     "build": "next build",
-    "eslint": "eslint ./src"
+    "eslint": "eslint ./src",
+    "stylelint": "stylelint ./src"
   },
   "browserslist": {
     "production": [

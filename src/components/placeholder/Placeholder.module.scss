@@ -2,35 +2,35 @@
 @use 'styles/variables/placeholder' as *;
 
 .placeholder {
-    pointer-events: none;
+  pointer-events: none;
 
-    &::after {
-        color: transparent;
+  &::after {
 
-        @include placeholder;
-    }
+    @include placeholder;
+    color: transparent;
+  }
 }
 
-.short:after {
-    content: 'aaaaaaaaaaaaa';
+.short::after {
+  content: 'aaaaaaaaaaaaa';
 
-    @include media.mobile { content: 'aaaaaaaa'; }
+  @include media.mobile { content: 'aaaaaaaa'; }
 }
 
-.medium:after {
-    content: 'aaaaaaaaaaaaaaaaaaaaaaaaaa';
+.medium::after {
+  content: 'aaaaaaaaaaaaaaaaaaaaaaaaaa';
 
-    @include media.mobile { content: 'aaaaaaaaaaaaaaaa'; }
+  @include media.mobile { content: 'aaaaaaaaaaaaaaaa'; }
 }
 
-.long:after {
-    content: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
+.long::after {
+  content: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
 
-    @include media.mobile { content: 'aaaaaaaaaaaaaaaaaaaaaaaa'; }
+  @include media.mobile { content: 'aaaaaaaaaaaaaaaaaaaaaaaa'; }
 }
 
-.paragraph:after {
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis ligula id ipsum molestie ornare. In commodo consectetur elit, id auctor elit eleifend facilisis. In at ante vel ligula ullamcorper sollicitudin tempus eget metus. Donec vitae ante blandit ligula porta lacinia ac at justo. Etiam sodales hendrerit dui ut volutpat. Curabitur mauris est, tempus et purus non, fermentum scelerisque dui. Vestibulum commodo elementum nisl, et faucibus lectus. Nunc commodo porttitor nunc quis blandit. Donec eu eros a justo volutpat volutpat venenatis in lectus. Vivamus sodales arcu eget quam tempor, id feugiat quam pellentesque. Fusce eu dignissim libero, quis ultrices quam. Donec non blandit arcu. Quisque sed eleifend nisi, quis tincidunt nunc.';
-    line-height: 1.5;
-    word-break: break-word;
+.paragraph::after {
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis ligula id ipsum molestie ornare. In commodo consectetur elit, id auctor elit eleifend facilisis. In at ante vel ligula ullamcorper sollicitudin tempus eget metus. Donec vitae ante blandit ligula porta lacinia ac at justo. Etiam sodales hendrerit dui ut volutpat. Curabitur mauris est, tempus et purus non, fermentum scelerisque dui. Vestibulum commodo elementum nisl, et faucibus lectus. Nunc commodo porttitor nunc quis blandit. Donec eu eros a justo volutpat volutpat venenatis in lectus. Vivamus sodales arcu eget quam tempor, id feugiat quam pellentesque. Fusce eu dignissim libero, quis ultrices quam. Donec non blandit arcu. Quisque sed eleifend nisi, quis tincidunt nunc.';
+  line-height: 1.5;
+  word-break: break-word;
 }

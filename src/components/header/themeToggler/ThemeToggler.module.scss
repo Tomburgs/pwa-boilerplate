@@ -1,64 +1,65 @@
 @use 'styles/variables/theme';
 
 @keyframes moveIn {
-    from { transform: translateX(-200%) }
-    to { transform: translateX(0) }
+  from { transform: translateX(-200%); }
+  to { transform: translateX(0); }
 }
 
 @keyframes moveOut {
-    from { transform: translateX(0) }
-    to { transform: translateX(200%) }
+  from { transform: translateX(0); }
+  to { transform: translateX(200%); }
 }
 
 .statusBarHighlight {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: env(safe-area-inset-top);
-    background-color: var(--status-bar-highlight-color);
-    margin: 0;
+  background-color: var(--status-bar-highlight-color);
+  height: env(safe-area-inset-top);
+  left: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
 
-    @include theme.dark-mode {
-        display: none;
-    }
+  @include theme.dark-mode {
+    display: none;
+  }
 }
 
 .themeToggler {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 0 0 1rem;
-    padding: 6px;
-    border: var(--border);
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
+  align-items: center;
+  border: var(--border);
+  border-radius: 50%;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  margin: 0 0 0 1rem;
+  overflow: hidden;
+  padding: 6px;
+  position: relative;
+  width: 50px;
 
-    &Icon {
-        --icon-size: 30px;
+  &Icon {
+    --icon-size: 30px;
 
-        fill: transparent;
-        position: absolute;
+    fill: transparent;
+    position: absolute;
+  }
+
+  > * {
+
+    @include theme.dark-mode {
+      &:first-child { animation-name: moveIn; }
+      &:last-child { animation-name: moveOut; }
     }
 
-    > * {
-        &:first-child,
-        &:last-child {
-            animation-duration: 500ms;
-            animation-timing-function: ease-in-out;
-            animation-fill-mode: forwards;
-            animation-iteration-count: initial;
-        }
-
-        &:first-child { animation-name: moveOut; }
-        &:last-child { animation-name: moveIn; }
-
-        @include theme.dark-mode {
-            &:first-child { animation-name: moveIn; }
-            &:last-child { animation-name: moveOut; }
-        }
+    &:first-child,
+    &:last-child {
+      animation-duration: 500ms;
+      animation-fill-mode: forwards;
+      animation-iteration-count: initial;
+      animation-timing-function: ease-in-out;
     }
+
+    &:first-child { animation-name: moveOut; }
+    &:last-child { animation-name: moveIn; }
+  }
 }
