@@ -23,10 +23,10 @@ export default function ThemeToggler(): JSX.Element {
   return useMemo(
     () => (
       <>
-                <Head>
-                    <meta name="theme-color" content={ themeColor } />
-                </Head>
-                { /*
+        <Head>
+          <meta name="theme-color" content={ themeColor } />
+        </Head>
+        { /*
                    * We're using black-translucent status bar setting on IOS,
                    * which means that status bar has white text & tranparent background.
                    * In light mode this causes the text to be invisible, so we create
@@ -36,15 +36,15 @@ export default function ThemeToggler(): JSX.Element {
                    * Currently this is the only way to do this, as IOS will not listen for status bar
                    * meta tag changes, and other settings create a significantly worse feel.
                    */ }
-                <figure className={ statusBarHighlight }/>
-                <button
-                  aria-label="change theme"
-                  className={ themeToggler }
-                  onClick={ toggleTheme }
-                >
-                    <Icon asset="Moon" className={ themeTogglerIcon } />
-                    <Icon asset="Sun" className={ themeTogglerIcon } />
-                </button>
+        <figure className={ statusBarHighlight }/>
+        <button
+          aria-label="change theme"
+          className={ themeToggler }
+          onClick={ toggleTheme }
+        >
+          <Icon asset="Moon" className={ themeTogglerIcon } />
+          <Icon asset="Sun" className={ themeTogglerIcon } />
+        </button>
       </>
     ), [isDarkModeEnabled, setIsDarkModeEnabled]
   );

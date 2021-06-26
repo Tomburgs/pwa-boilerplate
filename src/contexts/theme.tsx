@@ -59,8 +59,8 @@ export function ThemeProvider(
   useThemeChange(theme);
 
   return (
-        <ThemeContext.Provider value={ theme }>
-            { children }
-        </ThemeContext.Provider>
+    <ThemeContext.Provider value={ theme }>
+      { children }
+    </ThemeContext.Provider>
   );
 }

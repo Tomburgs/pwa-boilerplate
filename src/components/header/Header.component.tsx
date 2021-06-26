@@ -44,22 +44,22 @@ export default memo(
 
     return (
       <>
-                <div className={ offline }>
-                    <Icon
-                      asset="Cloud-Slash"
-                      className={ offlineIcon }
-                    />
+        <div className={ offline }>
+          <Icon
+            asset="Cloud-Slash"
+            className={ offlineIcon }
+          />
                     You are currently browsing in offline mode.
-                </div>
-                <header className={ header }>
-                    <nav>
-                        <div className={ headerControls }>
-                            <Logo />
-                            <ThemeToggler />
-                        </div>
-                        <Items />
-                    </nav>
-                </header>
+        </div>
+        <header className={ header }>
+          <nav>
+            <div className={ headerControls }>
+              <Logo />
+              <ThemeToggler />
+            </div>
+            <Items />
+          </nav>
+        </header>
       </>
     );
   }

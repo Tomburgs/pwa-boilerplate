@@ -14,21 +14,21 @@ export default function NotificationList(): JSX.Element {
   const cssVariables = { '--animation-duration': `${ANIMATION_DURATION}ms` } as CSSProperties;
 
   return (
-        <ul
-          className={ notificationList }
-          style={ cssVariables }
-        >
-            {
-                Object.entries(notifications).map(
-                  ([notificationId, notification]) => (
-                        <Notification
-                          key={ notificationId }
-                          notificationId={ +notificationId }
-                          notification={ notification }
-                        />
-                  )
-                )
-            }
-        </ul>
+    <ul
+      className={ notificationList }
+      style={ cssVariables }
+    >
+      {
+        Object.entries(notifications).map(
+          ([notificationId, notification]) => (
+            <Notification
+              key={ notificationId }
+              notificationId={ +notificationId }
+              notification={ notification }
+            />
+          )
+        )
+      }
+    </ul>
   );
 }

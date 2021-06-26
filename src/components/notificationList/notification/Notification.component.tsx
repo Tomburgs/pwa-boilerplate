@@ -77,22 +77,22 @@ export default function Notification({
     : notificationOpen;
 
   return (
-        <li
-          className={
-              injectClassNames(
-                notification,
-                notificationState
-              )
-          }
-        >
-            <button
-              type="button"
-              aria-label="close notification"
-              onClick={ hideNotification }
-            />
-            <p>
-                { message }
-            </p>
-        </li>
+    <li
+      className={
+        injectClassNames(
+          notification,
+          notificationState
+        )
+      }
+    >
+      <button
+        type="button"
+        aria-label="close notification"
+        onClick={ hideNotification }
+      />
+      <p>
+        { message }
+      </p>
+    </li>
   );
 }

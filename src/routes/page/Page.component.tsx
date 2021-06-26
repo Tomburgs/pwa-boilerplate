@@ -26,8 +26,8 @@ export const addTitleTags = (title: string): JSX.Element => {
 
   return (
     <>
-            <title>{ title }</title>
-            <meta name="og:title" content={ title } />
+      <title>{ title }</title>
+      <meta name="og:title" content={ title } />
     </>
   );
 };
@@ -38,11 +38,11 @@ export const addDescriptionTag = (description: string): JSX.Element => {
   }
 
   return (
-        <meta
-          name="description"
-          property="og:description"
-          content={ description }
-        />
+    <meta
+      name="description"
+      property="og:description"
+      content={ description }
+    />
   );
 };
 
@@ -55,32 +55,32 @@ export default function Page(props: PageProps): JSX.Element {
 
   return (
     <>
-            <Head>
-                { addTitleTags(title) }
-                { addDescriptionTag(description) }
-                <meta name="robots" content="INDEX,FOLLOW" />
-            </Head>
-            <main className={ classNames }>
-                { isLanding && <Landing /> }
-                <section>
-                    <div className={ pageContent }>
-                        <A2HS />
-                        <div className={ pageContent }>
-                            { content
-                              ? <Html content={ content } />
-                              : (
-                                <>
-                                      <figure className={ placeholder } />
-                                      <figure className={ placeholder } />
-                                      <figure className={ placeholder } />
-                                </>
-                              )
-                            }
-                        </div>
-                    </div>
-                    <Sidebar />
-                </section>
-            </main>
+      <Head>
+        { addTitleTags(title) }
+        { addDescriptionTag(description) }
+        <meta name="robots" content="INDEX,FOLLOW" />
+      </Head>
+      <main className={ classNames }>
+        { isLanding && <Landing /> }
+        <section>
+          <div className={ pageContent }>
+            <A2HS />
+            <div className={ pageContent }>
+              { content
+                ? <Html content={ content } />
+                : (
+                  <>
+                    <figure className={ placeholder } />
+                    <figure className={ placeholder } />
+                    <figure className={ placeholder } />
+                  </>
+                )
+              }
+            </div>
+          </div>
+          <Sidebar />
+        </section>
+      </main>
     </>
   );
 }

@@ -9,9 +9,9 @@ const {
 
 export default function IOSInstructions(): JSX.Element {
   return (
-        <p>
+    <p>
             Tap <Icon asset="Box-Arrow" className={ iconBox }/>, 
             then select Add to Home Screen <Icon asset="Plus-Square" className={ iconPlus }/>.
-        </p> 
+    </p> 
   );
 }

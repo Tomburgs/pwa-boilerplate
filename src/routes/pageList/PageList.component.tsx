@@ -12,24 +12,24 @@ const {
 export default function PageList(): JSX.Element {
   return (
     <>
-            <Head>
-                <title>Page List</title>
-            </Head>
-            <main className={ pageList }>
-                <h1>Pages</h1>
-                <p>
+      <Head>
+        <title>Page List</title>
+      </Head>
+      <main className={ pageList }>
+        <h1>Pages</h1>
+        <p>
                     Do you also think this lack of content looks sad?<br />
                     Feel free to contribute by going to our GitHub repo and creating a pull-request,<br />
                     we would greatly appreciate it!
-                </p>
-                <Pages className={ pageListContainer }>
-                    <li><Placeholder length="medium" /></li>
-                    <li><Placeholder length="medium" /></li>
-                    <li><Placeholder length="medium" /></li>
-                    <li><Placeholder length="medium" /></li>
-                    <li><Placeholder length="medium" /></li>
-                </Pages>
-            </main>
+        </p>
+        <Pages className={ pageListContainer }>
+          <li><Placeholder length="medium" /></li>
+          <li><Placeholder length="medium" /></li>
+          <li><Placeholder length="medium" /></li>
+          <li><Placeholder length="medium" /></li>
+          <li><Placeholder length="medium" /></li>
+        </Pages>
+      </main>
     </>
   );
 }

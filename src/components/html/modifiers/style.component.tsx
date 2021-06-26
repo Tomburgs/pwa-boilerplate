@@ -6,10 +6,10 @@ export default function Style(domNode: Element): JSX.Element | null {
   const { children } = domNode;
 
   return (
-        <Head>
-            <style>
-                { children }
-            </style>
-        </Head>
+    <Head>
+      <style>
+        { children }
+      </style>
+    </Head>
   );
 }

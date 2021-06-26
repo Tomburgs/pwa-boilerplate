@@ -19,21 +19,21 @@ export default function Items(): JSX.Element {
   const { pathname } = useRouter();
 
   return (
-        <ul className={ items }>
-            { links.map(({ name, url, alias }) => (
-                <li
-                  key={ name }
-                  className={
-                    injectClassNames([
-                      active,
-                      pathname === url
+    <ul className={ items }>
+      { links.map(({ name, url, alias }) => (
+        <li
+          key={ name }
+          className={
+            injectClassNames([
+              active,
+              pathname === url
                         || alias.includes(pathname)
-                    ])
-                  }
-                >
-                    <Link href={ url }>{ name }</Link>
-                </li>
-            )) }
-        </ul>
+            ])
+          }
+        >
+          <Link href={ url }>{ name }</Link>
+        </li>
+      )) }
+    </ul>
   );
 }

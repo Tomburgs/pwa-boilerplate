@@ -111,15 +111,7 @@
         "semi": ["error", "always"],
         "indent": [
             "warn",
-            2,
-            {
-                "ignoredNodes": [
-                    "JSXElement", "JSXElement > *", "JSXAttribute",
-                    "JSXIdentifier", "JSXNamespacedName", "JSXMemberExpression",
-                    "JSXSpreadAttribute", "JSXExpressionContainer", "JSXOpeningElement",
-                    "JSXClosingElement", "JSXText", "JSXEmptyExpression", "JSXSpreadChild"
-                ]
-            }
+            2
         ],
         "comma-dangle": ["error", "never"],
         "no-console": 1,

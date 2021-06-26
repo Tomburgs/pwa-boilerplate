@@ -83,33 +83,33 @@ export default class A2HS extends PureComponent<unknown, InstallState> {
       }
 
       return (
-            <figure className={ A2HSWrapper }>
-                <figcaption>
+        <figure className={ A2HSWrapper }>
+          <figcaption>
                     👋 Welcome!<br/>
                     Add this app to your home screen for the best experience!
-                </figcaption>
-                {
-                    isMobile.iOS()
-                      ? <IOSInstructions />
-                      : (
-                            <button
-                              onClick={ this.install }
-                              className={ button }
-                            >
+          </figcaption>
+          {
+            isMobile.iOS()
+              ? <IOSInstructions />
+              : (
+                <button
+                  onClick={ this.install }
+                  className={ button }
+                >
                                 Add to Home Screen
-                            </button>
-                      )
-                }
-                <div className={ A2HSControls }>
-                    <button
-                      type="button"
-                      aria-label="close notice"
-                      onClick={ this.dismissNotification }
-                    >
+                </button>
+              )
+          }
+          <div className={ A2HSControls }>
+            <button
+              type="button"
+              aria-label="close notice"
+              onClick={ this.dismissNotification }
+            >
                         Maybe later
-                    </button>
-                </div>
-            </figure>
+            </button>
+          </div>
+        </figure>
       );
     }
 }
