@@ -11,15 +11,15 @@ type IconProps = {
 };
 
 const Loader = ({ className = '' }: IconProps): JSX.Element => (
-    <span
-      className={
-          injectClassNames(
-            icon,
-            loader,
-            className
-          )
-      }
-    />
+  <span
+    className={
+      injectClassNames(
+        icon,
+        loader,
+        className
+      )
+    }
+  />
 );
 
 export default function Icon(props: IconProps): JSX.Element {

@@ -43,7 +43,7 @@ export default function Html(props: HtmlProps): JSX.Element {
 
   return (
     <>
-            { parser(content, options) }
+      { parser(content, options) }
     </>
   );
 }

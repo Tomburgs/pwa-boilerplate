@@ -24,32 +24,32 @@ export default function Sidebar(): JSX.Element {
   } = useUser();
 
   return (
-        <aside className={ sidebar }>
-            <div className={ sidebarProfile }>
-                <Image
-                  isPlaceholder={ !avatar_url }
-                  src={ avatar_url }
-                  alt="avatar"
-                  className={ sidebarProfileImage }
-                />
-                <h2 className={ sidebarProfileName }>
-                    <Placeholder content={ name } length="short" />
-                </h2>
-                <p className={ sidebarProfileBio }>
-                    <Placeholder content={ bio } length="medium" />
-                </p>
-            </div>
-            <div className={ sidebarPages }>
-                <h3>Pages</h3>
-                <Pages
-                  className={ sidebarPagesList }
-                  activeClass={ sidebarPagesActive }
-                >
-                    <li><Placeholder length="short" /></li>
-                    <li><Placeholder length="short" /></li>
-                    <li><Placeholder length="short" /></li>
-                </Pages>
-            </div>
-        </aside>
+    <aside className={ sidebar }>
+      <div className={ sidebarProfile }>
+        <Image
+          isPlaceholder={ !avatar_url }
+          src={ avatar_url }
+          alt="avatar"
+          className={ sidebarProfileImage }
+        />
+        <h2 className={ sidebarProfileName }>
+          <Placeholder content={ name } length="short" />
+        </h2>
+        <p className={ sidebarProfileBio }>
+          <Placeholder content={ bio } length="medium" />
+        </p>
+      </div>
+      <div className={ sidebarPages }>
+        <h3>Pages</h3>
+        <Pages
+          className={ sidebarPagesList }
+          activeClass={ sidebarPagesActive }
+        >
+          <li><Placeholder length="short" /></li>
+          <li><Placeholder length="short" /></li>
+          <li><Placeholder length="short" /></li>
+        </Pages>
+      </div>
+    </aside>
   );
 }

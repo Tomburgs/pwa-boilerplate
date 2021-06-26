@@ -26,38 +26,38 @@ export default function Profile(): JSX.Element {
 
   return (
     <>
-            <Head>
-                <title>Profile</title>
-                <meta name="robots" content="noindex" />
-            </Head>
-            <main className={ profile }>
-                <div className={ profileMain }>
-                    <Image
-                      isPlaceholder={ !avatar_url }
-                      src={ avatar_url }
-                      className={ profilePicture }
-                    />
-                    <div className={ profileContent }>
-                        <h1>
-                            <Placeholder content={ name } length="short" />
-                        </h1>
-                        <p>
-                            <Placeholder content={ bio } length="long" />
-                        </p>
-                        <h3>
-                            <Icon
-                              asset="People"
-                              className={ followersIcon }
-                            />
-                            {
-                                followers ?? <span className={ followersPlaceholder } />
-                            } Followers
-                        </h3>
-                    </div>
-                </div>
-                <div className={ about }>
-                    <h2>About</h2>
-                    <p>
+      <Head>
+        <title>Profile</title>
+        <meta name="robots" content="noindex" />
+      </Head>
+      <main className={ profile }>
+        <div className={ profileMain }>
+          <Image
+            isPlaceholder={ !avatar_url }
+            src={ avatar_url }
+            className={ profilePicture }
+          />
+          <div className={ profileContent }>
+            <h1>
+              <Placeholder content={ name } length="short" />
+            </h1>
+            <p>
+              <Placeholder content={ bio } length="long" />
+            </p>
+            <h3>
+              <Icon
+                asset="People"
+                className={ followersIcon }
+              />
+              {
+                followers ?? <span className={ followersPlaceholder } />
+              } Followers
+            </h3>
+          </div>
+        </div>
+        <div className={ about }>
+          <h2>About</h2>
+          <p>
                         Aliquam aliquet tempus metus et varius.
                         Etiam convallis nunc at magna venenatis, vitae egestas nibh accumsan.
                         Nam auctor neque eget odio pretium, non lobortis sem condimentum.
@@ -67,9 +67,9 @@ export default function Profile(): JSX.Element {
                         Morbi tincidunt purus tincidunt, maximus est vitae, semper erat.
                         Pellentesque dictum in nunc eu porttitor.
                         Integer vitae justo sit amet metus malesuada eleifend.
-                    </p>
-                </div>
-            </main>
+          </p>
+        </div>
+      </main>
     </>
   );
 }

@@ -68,29 +68,29 @@ export default function Image(props: ImageProps): JSX.Element {
     ? placeholder : styles[imageState];
 
   return (
-        <div
-          role="img"
-          aria-label={ alt }
-          className={
-            injectClassNames(
-              image,
-              imageStyle,
-              [className, !!className]
-            )
-          }
-        >
-            { !isPlaceholder && (
-                <img
-                  src={ src }
-                  alt={ alt }
-                  ref={ ref }
-                  height={ height }
-                  width={ width }
-                  loading={ loading }
-                  onLoad={ onLoad }
-                  onError={ onError }
-                />
-            ) }
-        </div>
+    <div
+      role="img"
+      aria-label={ alt }
+      className={
+        injectClassNames(
+          image,
+          imageStyle,
+          [className, !!className]
+        )
+      }
+    >
+      { !isPlaceholder && (
+        <img
+          src={ src }
+          alt={ alt }
+          ref={ ref }
+          height={ height }
+          width={ width }
+          loading={ loading }
+          onLoad={ onLoad }
+          onError={ onError }
+        />
+      ) }
+    </div>
   );
 }

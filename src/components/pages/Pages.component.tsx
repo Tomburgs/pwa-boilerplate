@@ -31,11 +31,11 @@ export const PageItem = (props: PageItemProps): JSX.Element => {
   const className = injectClassNames([activeClass, isActive]);
 
   return (
-        <li className={ className }>
-            <Link href={ `/${url}` }>
-                { name }
-            </Link>
-        </li>
+    <li className={ className }>
+      <Link href={ `/${url}` }>
+        { name }
+      </Link>
+    </li>
   );
 };
 
@@ -45,17 +45,17 @@ export const PageItemList = (props: PageItemList): JSX.Element => {
 
   return (
     <>
-            { Object.entries(schema).map(
-              ([url, { title: name }]) => (
-                    <PageItem
-                      key={ url }
-                      { ...{
-                        url, name, page,
-                        ...props
-                      } }
-                    />
-              )
-            ) }
+      { Object.entries(schema).map(
+        ([url, { title: name }]) => (
+          <PageItem
+            key={ url }
+            { ...{
+              url, name, page,
+              ...props
+            } }
+          />
+        )
+      ) }
     </>
   );
 };
@@ -67,17 +67,17 @@ export default memo(
     const isSchemaLoaded = !!Object.keys(schema).length;
 
     return (
-            <ul className={ className }>
-                { !isSchemaLoaded
-                  ? children
-                  : (
-                        <PageItemList
-                          schema={ schema }
-                          { ...props }
-                        />
-                  )
-                }
-            </ul>
+      <ul className={ className }>
+        { !isSchemaLoaded
+          ? children
+          : (
+            <PageItemList
+              schema={ schema }
+              { ...props }
+            />
+          )
+        }
+      </ul>
     );
   }
 );

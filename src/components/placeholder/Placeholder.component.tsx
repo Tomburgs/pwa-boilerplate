@@ -19,15 +19,15 @@ export default function Placeholder(
   }
 
   return (
-        <span
-          className={
-            injectClassNames(
-              placeholder,
-              styles[length]
-            )
-          }
-        >
-            { content }
-        </span>
+    <span
+      className={
+        injectClassNames(
+          placeholder,
+          styles[length]
+        )
+      }
+    >
+      { content }
+    </span>
   );
 }
