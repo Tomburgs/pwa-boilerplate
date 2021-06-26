@@ -58,10 +58,10 @@
 
 .followers {
   &Placeholder {
-    @include placeholder;
 
     color: transparent;
     margin: 0 5px 0 0;
+    @include placeholder;
 
     &::before { content: '42'; }
   }
