@@ -15,8 +15,8 @@
 }
 
 @mixin default {
-  @include _base;
   background-color: var(--button-background);
+  @include _base;
 
   &:hover {
     background-color: var(--button-hover);

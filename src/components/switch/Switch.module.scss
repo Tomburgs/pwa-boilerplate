@@ -1,0 +1,52 @@
+@use 'styles/variables/theme';
+
+$input: null;
+
+.input {
+  $input: & !global;
+
+  position: absolute;
+  max-height: 0;
+  opacity: 0;
+}
+
+.switch {
+  --checked-color: #3ce155;
+  --indicator-color: #69696e;
+
+  display: flex;
+  position: relative;
+  background-color: var(--secondary-block-color);
+  cursor: pointer;
+  border: var(--border);
+  width: 30px;
+  height: 15px;
+  border-radius: 8px;
+
+  @include theme.dark-mode {
+    --indicator-color: #fff;
+  }
+
+  #{$input}:checked + & {
+    background-color: var(--checked-color);
+  }
+
+  #{$input}:disabled + & {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--indicator-color);
+    transition: 100ms transform ease-in-out;
+
+    #{$input}:checked + & {
+      transform: translateX(15px);
+    }
+  }
+}

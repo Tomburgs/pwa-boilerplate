@@ -3,12 +3,20 @@
   "ignoreFiles": ["!**/*.scss"],
   "rules": {
     "indentation": [2],
-    "max-nesting-depth": 3,
+    "max-nesting-depth": 4,
     "selector-no-qualifying-type": null,
     "selector-max-id": null,
     "scss/at-mixin-pattern": null,
     "scss/at-function-pattern": null,
     "selector-class-pattern": null,
-    "length-zero-no-unit": null
+    "length-zero-no-unit": null,
+    "order/properties-alphabetical-order": null,
+    "order/order": [
+      "custom-properties",
+      "dollar-variables",
+      "declarations",
+      "at-rules",
+      "rules"
+    ]
   }
 }

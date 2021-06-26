@@ -79,14 +79,14 @@ html {
 }
 
 body {
-
-  @include font-family('Raleway', sans-serif);
   background-color: var(--primary-block-color);
   color: var(--primary-text-color);
   font-size: 12px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
+
+  @include font-family('Raleway', sans-serif);
 }
 
 #__next {

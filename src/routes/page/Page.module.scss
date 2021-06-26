@@ -42,9 +42,9 @@
 }
 
 .placeholder {
-  @include animations.placeholder;
   margin: 0 0 15px;
   padding-bottom: 20%;
+  @include animations.placeholder;
 
   &:nth-child(n + 2) {
     padding-bottom: 40%;
