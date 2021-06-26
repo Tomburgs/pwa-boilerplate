@@ -3,9 +3,11 @@ import React, {
   useState,
   useEffect,
   ReactNode,
-  useMemo
+  useMemo,
+  Dispatch,
+  SetStateAction
 } from 'react';
-import { browserStorage } from 'utils/browser';
+import { browserStorage, getWindowProperty } from 'utils/browser';
 import { checkMediaProperty } from 'utils/css';
 
 const PREFERS_COLOR_SCHEME = 'prefers-color-scheme: dark';
@@ -15,23 +17,23 @@ export type ThemeProviderProps = {
     children: ReactNode
 };
 
-export type ThemeValue = [
+export type ThemeValue = {
+  isDarkMode: boolean,
+  userTheme: [
     boolean,
-    (isDarkModeEnabled: boolean) => void
-]
+    Dispatch<SetStateAction<boolean>>
+  ],
+  systemTheme: [
+    boolean,
+    Dispatch<SetStateAction<boolean>>
+  ]
+};
 
-export const ThemeContext = createContext<ThemeValue | []>([]);
+export const ThemeContext = createContext<ThemeValue | null>(null);
 
-const useThemeChange = (theme: ThemeValue): void => {
-  const [isDarkModeEnabled] = theme;
-
+const useThemeChange = (isDarkModeEnabled: boolean): void => {
   useEffect(() => {
     const { documentElement: { classList } } = document;
-
-    browserStorage.setItem(
-      DARK_MODE,
-      isDarkModeEnabled
-    );
 
     if (isDarkModeEnabled) {
       classList.add(DARK_MODE);
@@ -43,23 +45,73 @@ const useThemeChange = (theme: ThemeValue): void => {
   }, [isDarkModeEnabled]);
 };
 
+const useSystemPreferenceChange = (
+  setIsSystemDarkMode: Dispatch<SetStateAction<boolean>>
+): void => {
+  useEffect(() => {
+    const { matchMedia } = getWindowProperty();
+
+    if (!matchMedia) {
+      return;
+    }
+
+    const listener = (event: MediaQueryListEvent): void => {
+      const { matches } = event;
+
+      setIsSystemDarkMode(matches);
+    };
+
+    const mediaQueryList = matchMedia(`(${PREFERS_COLOR_SCHEME})`);
+
+    mediaQueryList.addEventListener('change', listener);
+
+    return () => {
+      mediaQueryList.removeEventListener('change', listener);
+    };
+  }, [setIsSystemDarkMode]);
+};
+
+const getIsUserPreferenceSet = (): boolean => {
+  const userPreference = browserStorage.getItem(DARK_MODE);
+
+  return userPreference !== null;
+};
+
+const getIsUserDarkModeSet = (): boolean => {
+  const userPreference = browserStorage.getItem(DARK_MODE);
+
+  return !!userPreference;
+};
+
 export function ThemeProvider(
   { children }: ThemeProviderProps
 ): JSX.Element {
+  const isUserPreferenceSet = useMemo(() => getIsUserPreferenceSet(), []);
+  const isUserDarkModeInitial = useMemo(() => getIsUserDarkModeSet(), []);
+  const isSystemDarkModeInitial = useMemo(() => checkMediaProperty(PREFERS_COLOR_SCHEME), []);
+
+  const systemTheme = useState(!isUserPreferenceSet);
+  const userTheme = useState(isUserDarkModeInitial);
+  const [isSystemThemeUsed] = systemTheme;
+  const [isUserDarkMode] = userTheme;
+  const [isSystemDarkMode, setIsSystemDarkMode] = useState(isSystemDarkModeInitial);
+
   const isDarkMode = useMemo(() => {
-    const userPreference = browserStorage.getItem(DARK_MODE);
-    const isUserPreferenceSet = userPreference !== null;
-    const isSystemDarkMode = checkMediaProperty(PREFERS_COLOR_SCHEME);
+    return isSystemThemeUsed ? isSystemDarkMode : isUserDarkMode;
+  }, [isSystemThemeUsed, isSystemDarkMode, isUserDarkMode]);
 
-    return isUserPreferenceSet ? userPreference : isSystemDarkMode;
-  }, []);
+  useEffect(() => {
+    browserStorage.setItem(
+      DARK_MODE,
+      isUserDarkMode
+    );
+  }, [isUserDarkMode]);
 
-  const theme = useState(isDarkMode);
-
-  useThemeChange(theme);
+  useThemeChange(isDarkMode);
+  useSystemPreferenceChange(setIsSystemDarkMode);
 
   return (
-    <ThemeContext.Provider value={ theme }>
+    <ThemeContext.Provider value={ { isDarkMode, userTheme, systemTheme } }>
       { children }
     </ThemeContext.Provider>
   );
