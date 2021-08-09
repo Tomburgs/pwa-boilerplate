@@ -19,7 +19,7 @@
     "workbox-core": "^6.1.2",
     "workbox-expiration": "^6.0.2",
     "workbox-precaching": "^6.0.2",
-    "workbox-routing": "^6.0.2",
+    "workbox-routing": "^6.2.2",
     "workbox-strategies": "^6.0.2",
     "workbox-webpack-plugin": "^6.1.2"
   },
