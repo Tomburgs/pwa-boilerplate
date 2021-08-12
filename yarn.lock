@@ -3802,6 +3802,11 @@ iconv-lite@^0.6.2:
   dependencies:
     safer-buffer ">= 2.1.2 < 3.0.0"
 
+idb@^6.0.0:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/idb/-/idb-6.1.2.tgz#82ef5c951b8e1f47875d36ccafa4bedafc62f2f1"
+  integrity sha512-1DNDVu3yDhAZkFDlJf0t7r+GLZ248F5pTAtA7V0oVG3yjmV125qZOx3g0XpAEkGZVYQiFDAsSOnGet2bhugc3w==
+
 ieee754@^1.1.4:
   version "1.1.13"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.13.tgz#ec168558e95aa181fd87d37f55c32bbcb6708b84"
@@ -6659,24 +6664,18 @@ workbox-cacheable-response@^6.1.2:
   dependencies:
     workbox-core "^6.1.2"
 
-workbox-core@^6.0.2, workbox-core@^6.1.2:
-  version "6.1.2"
-  resolved "https://registry.yarnpkg.com/workbox-core/-/workbox-core-6.1.2.tgz#b694ca77e1cdf43c330f8fb29122946aa7e6a7a1"
-  integrity sha512-69rch7EyPsNAx5Y5YlSoHV39/EEE1oDeb5zmLIy6+mgB4BnaG6u/tlDtvjvKqHcPM0gz2L5SzYtTEvWmk5WRTQ==
+workbox-core@6.2.4, workbox-core@^6.0.2, workbox-core@^6.1.2:
+  version "6.2.4"
+  resolved "https://registry.yarnpkg.com/workbox-core/-/workbox-core-6.2.4.tgz#0ffb4f0ce6d8e36f10bf4aabd96a6f55705ccd80"
+  integrity sha512-Nu8X4R4Is3g8uzEJ6qwbW2CGVpzntW/cSf8OfsQGIKQR0nt84FAKzP2cLDaNLp3L/iV9TuhZgCTZzkMiap5/OQ==
 
-workbox-expiration@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/workbox-expiration/-/workbox-expiration-6.0.2.tgz#ac01e8d17f48daa31dc0872c09ee6f4d2cf28ccb"
-  integrity sha512-6+nbR18cklAdI3BPT675ytftXPwnVbXGR8mPWNWTJtl5y2urRYv56ZOJLD7FBFVkZ8EjWiRhNP/A0fkxgdKtWQ==
+workbox-expiration@^6.1.2, workbox-expiration@^6.2.4:
+  version "6.2.4"
+  resolved "https://registry.yarnpkg.com/workbox-expiration/-/workbox-expiration-6.2.4.tgz#80ff337795d5741ee0f84ae68eb25bcb6a54feb8"
+  integrity sha512-EdOBLunrE3+Ff50y7AYDbiwtiLDvB+oEIkL1Wd9G5d176YVqFfgPfMRzJQ7fN+Yy2NfmsFME0Bw+dQruYekWsQ==
   dependencies:
-    workbox-core "^6.0.2"
-
-workbox-expiration@^6.1.2:
-  version "6.1.2"
-  resolved "https://registry.yarnpkg.com/workbox-expiration/-/workbox-expiration-6.1.2.tgz#0e31ff9cc12a2982430226cd7f34f7b16b3ddbae"
-  integrity sha512-86cXz8Ae5cAJMgJ6aD/8E1NMNON4qGnE4ir1G3VuOu1xLsx2ItbbXmz6b0BB2dZ+kX6BDwqE0wkgS5As5Sds7g==
-  dependencies:
-    workbox-core "^6.1.2"
+    idb "^6.0.0"
+    workbox-core "6.2.4"
 
 workbox-google-analytics@^6.1.2:
   version "6.1.2"
