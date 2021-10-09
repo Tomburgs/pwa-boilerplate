@@ -10,7 +10,7 @@ export default function Footer(): JSX.Element {
     <footer className={ footer }>
       <p>© PWA Boilerplate</p>
       <p>
-        View source code on
+        View source code on{ ' ' }
         <a
           href="https://github.com/tomburgs/pwa-boilerplate"
           target="_blank"

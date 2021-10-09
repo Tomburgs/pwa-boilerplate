@@ -1,7 +1,7 @@
 @mixin _base {
   border: 1px solid var(--button-background);
   border-radius: var(--button-radius);
-  color: var(--primary-text-color);
+  color: var(--button-text-color);
   cursor: pointer;
   display: inline-block;
   font-size: var(--button-font-size);
