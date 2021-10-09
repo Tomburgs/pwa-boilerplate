@@ -86,7 +86,7 @@ export default function ThemeToggler(): JSX.Element {
             <Switch
               id={ DARK_MODE_SETTING }
               checked={ !isSystemThemeUsed && isDarkModeEnabled }
-              onClick={ onToggleTheme }
+              onChange={ onToggleTheme }
               disabled={ isSystemThemeUsed }
             />
             <label htmlFor={ DARK_MODE_SETTING }>Use Dark Mode</label>
@@ -95,7 +95,7 @@ export default function ThemeToggler(): JSX.Element {
             <Switch
               id={ SYSTEM_THEME_SETTING }
               checked={ isSystemThemeUsed }
-              onClick={ onToggleSystemTheme }
+              onChange={ onToggleSystemTheme }
             />
             <label htmlFor={ SYSTEM_THEME_SETTING }>Use System Theme</label></li>
         </ul>
