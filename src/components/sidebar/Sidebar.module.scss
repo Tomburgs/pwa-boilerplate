@@ -16,35 +16,6 @@
     display: none;
   }
 
-  &Profile {
-    align-items: center;
-    display: flex;
-    flex-flow: column;
-    margin: 0 0 2rem;
-
-    &Image {
-      border-radius: 50%;
-      height: 150px;
-      width: 150px;
-    }
-
-    &Name {
-      font-size: 20px;
-      font-weight: 500;
-      margin: 1rem 0 0;
-    }
-
-    &Bio {
-      color: var(--secondary-text-color);
-      font-size: 16px;
-      font-weight: 400;
-      margin: 6px 0 0;
-      text-align: center;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-  }
-
   &Pages {
     h3 {
       font-size: 17px;

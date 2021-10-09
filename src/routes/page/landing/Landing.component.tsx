@@ -17,9 +17,9 @@ export default function Landing(): JSX.Element {
         <div className={ landingText }>
           <h1>PWA Boilerplate</h1>
           <p>
-                        Designed to help you kick-start your next project.<br />
-                        This boilerplate is production ready and comes with 
-                        a service worker, redux store, dark-mode, router, and plenty other useful features.
+            Designed to help you kick-start your next project.<br />
+            This boilerplate is production ready and comes with 
+            a service worker, redux store, dark-mode, router, and plenty other useful features.
           </p>
         </div>
         <div className={ landingNavigationWrapper }>
@@ -28,7 +28,7 @@ export default function Landing(): JSX.Element {
             target="_blank"
             rel="noreferrer"
           >
-                        View source code on GitHub
+          View source code on GitHub
           </a>
           <p>Available under MIT license</p>
         </div>
