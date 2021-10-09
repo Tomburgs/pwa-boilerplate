@@ -20,6 +20,7 @@ module.exports = {
         serviceWorkerUrl
     },
     pageExtensions: ['ts', 'tsx'],
+    excludeFile: (str) => /\/src\/sw\/.*/.test(str),
     webpack: (config, { isServer, dev, webpack, buildId }) => {
         config.module.rules.push(
             {
