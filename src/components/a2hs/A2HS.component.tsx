@@ -46,6 +46,8 @@ export default class A2HS extends PureComponent<unknown, InstallState> {
     }
 
     dismissNotification = (): void => {
+      this.setState({ isOpen: false });
+
       browserStorage.setItem(
         A2HS_IDENTIFIER,
         true,
@@ -85,8 +87,8 @@ export default class A2HS extends PureComponent<unknown, InstallState> {
       return (
         <figure className={ A2HSWrapper }>
           <figcaption>
-                    👋 Welcome!<br/>
-                    Add this app to your home screen for the best experience!
+            👋 Welcome!<br/>
+            Add this app to your home screen for the best experience!
           </figcaption>
           {
             isMobile.iOS()
@@ -96,7 +98,7 @@ export default class A2HS extends PureComponent<unknown, InstallState> {
                   onClick={ this.install }
                   className={ button }
                 >
-                                Add to Home Screen
+                  Add to Home Screen
                 </button>
               )
           }
@@ -106,7 +108,7 @@ export default class A2HS extends PureComponent<unknown, InstallState> {
               aria-label="close notice"
               onClick={ this.dismissNotification }
             >
-                        Maybe later
+              Maybe later
             </button>
           </div>
         </figure>
