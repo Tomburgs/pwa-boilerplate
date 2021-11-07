@@ -36,8 +36,8 @@ export default function Landing(): JSX.Element {
           className={ landingImage }
           src="/assets/landing.png"
           alt="Desktop & Mobile PWA Application"
-          width="400px"
-          height="340px"
+          width="450px"
+          height="310px"
         />
       </div>
     </div>

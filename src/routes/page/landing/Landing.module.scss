@@ -23,7 +23,7 @@
   max-width: var(--content-max-width);
   padding: var(--content-padding) var(--content-padding) 0;
 
-  @include media.mobile {
+  @include media.before-desktop {
     grid-template-columns: auto;
   }
 
@@ -50,7 +50,7 @@
     text-align: center;
     padding: var(--content-padding) 0;
 
-    @include media.mobile {
+    @include media.before-desktop {
       grid-row: 3;
     }
 
@@ -75,7 +75,7 @@
     margin: 0 auto;
     width: fit-content;
 
-    @include media.after-mobile {
+    @include media.desktop {
       margin: 4rem 0 0;
       grid-column: 2;
       grid-row: 1 / span 2;
