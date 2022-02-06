@@ -50,10 +50,6 @@
     text-align: center;
     padding: var(--content-padding) 0;
 
-    @include media.before-desktop {
-      grid-row: 3;
-    }
-
     a {
       --button-text-color: #f2f2f7;
       --button-font-weight: 600;

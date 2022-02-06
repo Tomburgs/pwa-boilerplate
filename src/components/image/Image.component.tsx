@@ -1,4 +1,4 @@
-import React, { RefObject, useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { injectClassNames } from 'utils/css';
 import styles from './Image.module.scss';
 
@@ -7,10 +7,12 @@ const {
   placeholder
 } = styles;
 
-export const IMAGE_LOADING = 'IMAGE_LOADING';
-export const IMAGE_LOADED = 'IMAGE_LOADED';
-export const IMAGE_NOT_FOUND = 'IMAGE_NOT_FOUND';
-export const IMAGE_NOT_SPECIFIED = 'IMAGE_NOT_SPECIFIED';
+enum ImageState {
+  Loading = 'IMAGE_LOADING',
+  Loaded = 'IMAGE_LOADED',
+  NotFound = 'IMAGE_NOT_FOUND',
+  NotSpecified = 'IMAGE_NOT_SPECIFIED',
+}
 
 type ImageProps = {
     isPlaceholder?: boolean | null,
@@ -22,30 +24,47 @@ type ImageProps = {
     className?: string
 };
 
-const useImageState = (
-  src: string,
-  ref: RefObject<HTMLImageElement>
-): [string, (imageState: string) => void] => {
-  const isLoaded = ref.current?.complete;
+type UseImageState = () => [
+  (img: HTMLImageElement | null) => void,
+  ImageState,
+];
 
-  const initialState = isLoaded ? IMAGE_LOADED : IMAGE_LOADING;
-  const [imageState, setImageState] = useState(initialState);
+const useImageState: UseImageState = () => {
+  const [imageState, setImageState] = useState<ImageState>(() => ImageState.Loading);
 
-  useEffect(() => {
-    if (isLoaded) {
-      setImageState(IMAGE_LOADED);
+  const imageRefCallback = useCallback((img: HTMLImageElement | null) => {
+    if (!img) {
       return;
     }
 
-    if (!src) {
-      setImageState(IMAGE_NOT_SPECIFIED);
+    if (img.complete) {
+      setImageState(ImageState.Loaded);
       return;
     }
 
-    setImageState(IMAGE_LOADING);
-  }, [isLoaded, src]);
+    if (!img.src) {
+      setImageState(ImageState.NotSpecified);
+      return;
+    }
 
-  return [imageState, setImageState];
+    const onLoad = (): void => {
+      setImageState(ImageState.Loaded);
+    };
+
+    const onError = (): void => {
+      setImageState(ImageState.NotFound);
+    };
+
+    img.addEventListener('load', onLoad);
+    img.addEventListener('error', onError);
+
+    return () => {
+      img.removeEventListener('load', onLoad);
+      img.removeEventListener('error', onError);
+    };
+  }, []);
+
+  return [imageRefCallback, imageState];
 };
 
 export default function Image(props: ImageProps): JSX.Element {
@@ -58,11 +77,7 @@ export default function Image(props: ImageProps): JSX.Element {
     className = '',
     isPlaceholder = false
   } = props;
-  const ref = useRef<HTMLImageElement>(null);
-  const [imageState, setImageState] = useImageState(src, ref);
-
-  const onLoad = useCallback(() => setImageState(IMAGE_LOADED), [setImageState]);
-  const onError = useCallback(() => setImageState(IMAGE_NOT_FOUND), [setImageState]);
+  const [imageRef, imageState] = useImageState();
 
   const imageStyle = isPlaceholder
     ? placeholder : styles[imageState];
@@ -83,12 +98,10 @@ export default function Image(props: ImageProps): JSX.Element {
         <img
           src={ src }
           alt={ alt }
-          ref={ ref }
+          ref={ imageRef }
           height={ height }
           width={ width }
           loading={ loading }
-          onLoad={ onLoad }
-          onError={ onError }
         />
       ) }
     </div>
