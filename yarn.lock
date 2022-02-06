@@ -6097,10 +6097,15 @@ workbox-cacheable-response@6.3.0:
   dependencies:
     workbox-core "6.3.0"
 
-workbox-core@6.3.0, workbox-core@^6.3.0:
+workbox-core@6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/workbox-core/-/workbox-core-6.3.0.tgz#a7d82bae6f623f342e04028a0a2cef39af71af55"
   integrity sha512-SufToEV3SOLwwz3j+P4pgkfpzLRUlR17sX3p/LrMHP/brYKvJQqjTwtSvaCkkAX0RPHX2TFHmN8xhPP1bpmomg==
+
+workbox-core@^6.4.2:
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/workbox-core/-/workbox-core-6.4.2.tgz#f99fd36a211cc01dce90aa7d5f2c255e8fe9d6bc"
+  integrity sha512-1U6cdEYPcajRXiboSlpJx6U7TvhIKbxRRerfepAJu2hniKwJ3DHILjpU/zx3yvzSBCWcNJDoFalf7Vgd7ey/rw==
 
 workbox-expiration@6.3.0, workbox-expiration@^6.3.0:
   version "6.3.0"

@@ -16,7 +16,7 @@
     "redux-thunk": "^2.3.0",
     "sass": "^1.49.7",
     "typescript": "^4.5.5",
-    "workbox-core": "^6.3.0",
+    "workbox-core": "^6.4.2",
     "workbox-expiration": "^6.3.0",
     "workbox-precaching": "^6.3.0",
     "workbox-routing": "^6.3.0",
