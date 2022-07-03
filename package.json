@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@types/css-modules": "^1.0.2",
-    "@types/node": "^14.14.22",
+    "@types/node": "^18.0.1",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.9",
     "@types/react-redux": "^7.1.16",
@@ -34,7 +34,7 @@
     "eslint": "^7.23.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "^11.0.1",
-    "eslint-plugin-flowtype": "5.7.0",
+    "eslint-plugin-flowtype": "5.10.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "^7.24.0",
