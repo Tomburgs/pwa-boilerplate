@@ -5,7 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@svgr/webpack": "6.2.1",
-    "html-react-parser": "^1.4.5",
+    "html-react-parser": "^2.0.0",
     "jstoxml": "^2.2.7",
     "next": "^11.0.0",
     "raw-loader": "^4.0.2",
@@ -34,7 +34,7 @@
     "eslint": "^7.23.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "^11.0.1",
-    "eslint-plugin-flowtype": "5.7.0",
+    "eslint-plugin-flowtype": "5.10.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "^7.24.0",
